@@ -22,7 +22,8 @@ You need two things:
 - **An O'Reilly learning platform account.** The skill's answers come from O'Reilly's library;
   without an account there is nothing to search.
 - **The O'Reilly Expert Intelligence MCP server connected to your agent.** This is the connector
-  that lets Claude (or Codex) search O'Reilly content.
+  that lets Claude (or Codex) search O'Reilly content. See the
+  [MCP guide](https://www.oreilly.com/online-learning/support/mcp-guide.html) for setup steps.
 
 ## Install
 
