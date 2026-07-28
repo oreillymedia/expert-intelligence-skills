@@ -1,0 +1,32 @@
+{
+  "name": "forecast-project-delivery",
+  "version": "0.1.0",
+  "description": "Pressure-tests a plan into realistic timelines and delivery risks.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "productivity"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Delivery Forecast",
+    "shortDescription": "Pressure-tests a plan into realistic timelines and delivery risks.",
+    "longDescription": "A forecast that separates the scope evidence from the schedule-risk drivers, then lands on a range rather than a single date — with the specific risks that would push you to the far end and what published estimation research says about each.",
+    "developerName": "O'Reilly Media",
+    "category": "productivity",
+    "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "defaultPrompt": [
+      "Pressure-test this six-week delivery plan.",
+      "Is our Q3 migration timeline realistic?",
+      "What delivery risks is this plan missing?"
+    ]
+  }
+}

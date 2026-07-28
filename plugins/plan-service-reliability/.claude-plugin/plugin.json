@@ -1,0 +1,18 @@
+{
+  "name": "plan-service-reliability",
+  "version": "0.1.0",
+  "description": "Drafts SLOs and an error-budget policy for a new or evolving service.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "monitoring"
+  ]
+}

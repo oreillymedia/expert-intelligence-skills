@@ -1,0 +1,201 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "expert-intelligence-skills",
+  "description": "O'Reilly Expert Intelligence skills — ground engineering and leadership decisions in expert consensus from the O'Reilly learning platform, with citations.",
+  "owner": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "interface": {
+    "displayName": "O'Reilly Expert Intelligence"
+  },
+  "plugins": [
+    {
+      "name": "create-decision-brief",
+      "source": "./plugins/create-decision-brief",
+      "description": "Turns a \"should we?\" into a memo-ready recommendation grounded in expert consensus.",
+      "displayName": "Decision Brief",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "productivity",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
+    },
+    {
+      "name": "compare-implementation-approaches",
+      "source": "./plugins/compare-implementation-approaches",
+      "description": "Compares implementation approaches with cited trade-offs and a code example.",
+      "displayName": "Implementation Advisor",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "development",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
+    },
+    {
+      "name": "review-architecture-decision",
+      "source": "./plugins/review-architecture-decision",
+      "description": "Evaluates a system design against expert trade-off analysis.",
+      "displayName": "Architecture Decision Review",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "development",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
+    },
+    {
+      "name": "review-technical-proposal",
+      "source": "./plugins/review-technical-proposal",
+      "description": "Reviews an RFC for gaps and generates the pushback questions you'll get.",
+      "displayName": "Technical Proposal Review",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "development",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
+    },
+    {
+      "name": "evaluate-security-risk",
+      "source": "./plugins/evaluate-security-risk",
+      "description": "Produces a STRIDE threat model, flagging the risks teams commonly miss.",
+      "displayName": "Security Risk Review",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "security",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
+    },
+    {
+      "name": "forecast-project-delivery",
+      "source": "./plugins/forecast-project-delivery",
+      "description": "Pressure-tests a plan into realistic timelines and delivery risks.",
+      "displayName": "Delivery Forecast",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "productivity",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
+    },
+    {
+      "name": "plan-service-reliability",
+      "source": "./plugins/plan-service-reliability",
+      "description": "Drafts SLOs and an error-budget policy for a new or evolving service.",
+      "displayName": "Reliability Plan",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "monitoring",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
+    },
+    {
+      "name": "plan-production-ready-ai",
+      "source": "./plugins/plan-production-ready-ai",
+      "description": "Recommends an ML deployment strategy calibrated to your team's maturity.",
+      "displayName": "Production Ready AI",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "deployment",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
+    },
+    {
+      "name": "assess-team-structure",
+      "source": "./plugins/assess-team-structure",
+      "description": "Diagnoses team structure problems against expert org-design frameworks.",
+      "displayName": "Team Assessment",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "productivity",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
+    },
+    {
+      "name": "plan-domain-rampup",
+      "source": "./plugins/plan-domain-rampup",
+      "description": "Builds a 30-60-90 day plan for stepping into an unfamiliar domain.",
+      "displayName": "Ramp Plan",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "learning",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
+    },
+    {
+      "name": "create-learning-plan",
+      "source": "./plugins/create-learning-plan",
+      "description": "Sequences expert content into a learning path for a career transition.",
+      "displayName": "Learning Plan",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "learning",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
+    }
+  ]
+}

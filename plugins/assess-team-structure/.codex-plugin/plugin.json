@@ -1,0 +1,32 @@
+{
+  "name": "assess-team-structure",
+  "version": "0.1.0",
+  "description": "Diagnoses team structure problems against expert org-design frameworks.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "productivity"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Team Assessment",
+    "shortDescription": "Diagnoses team structure problems against expert org-design frameworks.",
+    "longDescription": "A diagnosis of what's actually causing the friction — coupling, cognitive load, ownership gaps — read against published org-design frameworks, with the changes worth making and the ones that would just reshuffle the org chart.",
+    "developerName": "O'Reilly Media",
+    "category": "productivity",
+    "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "defaultPrompt": [
+      "Our team keeps blocking on other teams — why?",
+      "Diagnose our platform team's structure.",
+      "Should we split this 30-person team?"
+    ]
+  }
+}

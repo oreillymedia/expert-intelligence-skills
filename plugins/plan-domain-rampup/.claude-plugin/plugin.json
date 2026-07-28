@@ -1,0 +1,18 @@
+{
+  "name": "plan-domain-rampup",
+  "version": "0.1.0",
+  "description": "Builds a 30-60-90 day plan for stepping into an unfamiliar domain.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "learning"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "compare-implementation-approaches",
+  "version": "0.1.0",
+  "description": "Compares implementation approaches with cited trade-offs and a code example.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "development"
+  ]
+}

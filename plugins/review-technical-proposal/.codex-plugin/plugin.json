@@ -1,0 +1,32 @@
+{
+  "name": "review-technical-proposal",
+  "version": "0.1.0",
+  "description": "Reviews an RFC for gaps and generates the pushback questions you'll get.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "development"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Technical Proposal Review",
+    "shortDescription": "Reviews an RFC for gaps and generates the pushback questions you'll get.",
+    "longDescription": "A read of what the proposal claims versus what it assumes, the gaps a practitioner would catch, and a set of concrete pushback questions to expect in review. Aimed at a better proposal, not a defeated author — where the design is sound it says so.",
+    "developerName": "O'Reilly Media",
+    "category": "development",
+    "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "defaultPrompt": [
+      "Review this RFC and find the gaps.",
+      "What pushback should I expect on this design?",
+      "Where is my proposal weakest?"
+    ]
+  }
+}

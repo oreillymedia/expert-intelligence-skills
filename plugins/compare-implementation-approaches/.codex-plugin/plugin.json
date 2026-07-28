@@ -1,0 +1,32 @@
+{
+  "name": "compare-implementation-approaches",
+  "version": "0.1.0",
+  "description": "Compares implementation approaches with cited trade-offs and a code example.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "development"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Implementation Advisor",
+    "shortDescription": "Compares implementation approaches with cited trade-offs and a code example.",
+    "longDescription": "A direct recommendation between the approaches you're weighing, with the trade-offs that actually apply at your constraints, and a concrete code example of the recommended path. Deliberately light on searching — it answers rather than producing a research report.",
+    "developerName": "O'Reilly Media",
+    "category": "development",
+    "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "defaultPrompt": [
+      "Compare Kafka vs SQS for our event pipeline.",
+      "Which caching approach fits our read load?",
+      "Postgres or DynamoDB for this service?"
+    ]
+  }
+}

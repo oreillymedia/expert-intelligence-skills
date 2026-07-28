@@ -1,0 +1,32 @@
+{
+  "name": "create-decision-brief",
+  "version": "0.1.0",
+  "description": "Turns a \"should we?\" into a memo-ready recommendation grounded in expert consensus.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "productivity"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Decision Brief",
+    "shortDescription": "Turns a \"should we?\" into a memo-ready recommendation grounded in expert consensus.",
+    "longDescription": "A half-page brief that leads with the recommendation, then lays out where experts agree, where they disagree, the failure modes teams at your scale hit, what has to be true first, and what evidence would flip the call. Scannable in under two minutes and forwardable to a board or a skeptical peer.",
+    "developerName": "O'Reilly Media",
+    "category": "productivity",
+    "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "defaultPrompt": [
+      "Should we adopt platform engineering org-wide?",
+      "Is it worth migrating off our monolith?",
+      "Build or buy our feature-flag system?"
+    ]
+  }
+}

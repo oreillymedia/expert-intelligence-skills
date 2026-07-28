@@ -1,0 +1,32 @@
+{
+  "name": "plan-production-ready-ai",
+  "version": "0.1.0",
+  "description": "Recommends an ML deployment strategy calibrated to your team's maturity.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "deployment"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Production Ready AI",
+    "shortDescription": "Recommends an ML deployment strategy calibrated to your team's maturity.",
+    "longDescription": "A deployment plan matched to what your team can actually operate today — a team with no MLOps practice gets different advice than one with a platform — covering rollout shape, monitoring, and the failure modes that show up at that maturity level.",
+    "developerName": "O'Reilly Media",
+    "category": "deployment",
+    "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "defaultPrompt": [
+      "How should we deploy this model to prod?",
+      "We're new to MLOps — where do we start?",
+      "Plan a safe rollout for this ML feature."
+    ]
+  }
+}

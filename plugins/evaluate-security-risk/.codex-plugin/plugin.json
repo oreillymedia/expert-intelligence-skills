@@ -1,0 +1,32 @@
+{
+  "name": "evaluate-security-risk",
+  "version": "0.1.0",
+  "description": "Produces a STRIDE threat model, flagging the risks teams commonly miss.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "security"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Security Risk Review",
+    "shortDescription": "Produces a STRIDE threat model, flagging the risks teams commonly miss.",
+    "longDescription": "A threat model over your system — STRIDE by default, or another framework if you name one — with each threat tied to published analysis rather than a generic checklist, and explicit attention to the categories teams routinely skip.",
+    "developerName": "O'Reilly Media",
+    "category": "security",
+    "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "defaultPrompt": [
+      "Threat model our new payments endpoint.",
+      "What security risks are we missing here?",
+      "STRIDE review of this auth flow."
+    ]
+  }
+}
