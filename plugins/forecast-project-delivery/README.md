@@ -3,7 +3,7 @@
 Pressure-tests a plan into realistic timelines and delivery risks.
 
 Part of the [expert-intelligence-skills](https://github.com/oreillymedia/expert-intelligence-skills)
-marketplace. Each skill installs as its own plugin, so you can take just this one.
+marketplace. 
 
 ## What you get
 
@@ -93,5 +93,6 @@ with the **Download raw file** button, then:
 >
 > What delivery risks is this plan missing?
 
-You don't need to name the skill. It triggers on the shape of the request — see the `description`
-field in `skills/forecast-project-delivery/SKILL.md` for the full set of trigger conditions.
+This skill triggers based on the shape of your context and prompt. See the
+`description` field in `skills/forecast-project-delivery/SKILL.md` for the full set of
+trigger conditions.

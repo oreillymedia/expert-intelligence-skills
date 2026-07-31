@@ -3,7 +3,7 @@
 Recommends an ML deployment strategy calibrated to your team's maturity.
 
 Part of the [expert-intelligence-skills](https://github.com/oreillymedia/expert-intelligence-skills)
-marketplace. Each skill installs as its own plugin, so you can take just this one.
+marketplace. 
 
 ## What you get
 
@@ -93,5 +93,6 @@ with the **Download raw file** button, then:
 >
 > Plan a safe rollout for this ML feature.
 
-You don't need to name the skill. It triggers on the shape of the request — see the `description`
-field in `skills/plan-production-ready-ai/SKILL.md` for the full set of trigger conditions.
+This skill triggers based on the shape of your context and prompt. See the
+`description` field in `skills/plan-production-ready-ai/SKILL.md` for the full set of
+trigger conditions.

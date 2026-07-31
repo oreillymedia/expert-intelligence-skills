@@ -3,7 +3,7 @@
 Turns a "should we?" into a memo-ready recommendation grounded in expert consensus.
 
 Part of the [expert-intelligence-skills](https://github.com/oreillymedia/expert-intelligence-skills)
-marketplace. Each skill installs as its own plugin, so you can take just this one.
+marketplace. 
 
 ## What you get
 
@@ -93,5 +93,6 @@ with the **Download raw file** button, then:
 >
 > Build or buy our feature-flag system?
 
-You don't need to name the skill. It triggers on the shape of the request — see the `description`
-field in `skills/create-decision-brief/SKILL.md` for the full set of trigger conditions.
+This skill triggers based on the shape of your context and prompt. See the
+`description` field in `skills/create-decision-brief/SKILL.md` for the full set of
+trigger conditions.
