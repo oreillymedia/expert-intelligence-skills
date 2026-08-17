@@ -8,13 +8,15 @@ Expert Intelligence MCP tools, then writes to a specific output shape: a half-pa
 STRIDE threat model, a 30-60-90 ramp plan. Every claim carries a link back to the book, video, or
 event it came from, and each skill is instructed never to cite a source that didn't actually surface.
 
-The repo is a **plugin marketplace**. Install the whole catalog or a single skill, in Claude or
-Codex.
+The repo is a **plugin marketplace**. Install the complete
+[`oreilly-expert-intelligence`](plugins/oreilly-expert-intelligence) toolkit or a single skill, in
+Claude or Codex.
 
 ## Skills
 
 | Category | Skill | What it does |
 |---|---|---|
+| All skills | [`oreilly-expert-intelligence`](plugins/oreilly-expert-intelligence) | Installs all 11 Expert Intelligence skills in one plugin |
 | De-risk a decision | [`create-decision-brief`](plugins/create-decision-brief) | Turns a "should we?" into a memo-ready recommendation grounded in expert consensus |
 | De-risk a decision | [`forecast-project-delivery`](plugins/forecast-project-delivery) | Pressure-tests a plan into realistic timelines and delivery risks |
 | De-risk a decision | [`assess-team-structure`](plugins/assess-team-structure) | Diagnoses team structure problems against expert org-design frameworks |

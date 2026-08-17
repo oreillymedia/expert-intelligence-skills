@@ -1,0 +1,32 @@
+{
+  "name": "oreilly-expert-intelligence",
+  "version": "0.1.0",
+  "description": "A cited expert research toolkit for engineering decisions, delivery, reliability, security, and team growth.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "productivity"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "O'Reilly Expert Intelligence",
+    "shortDescription": "A cited expert research toolkit for engineering decisions, delivery, reliability, security, and team growth.",
+    "longDescription": "All 11 Expert Intelligence skills in one install: decision briefs, delivery forecasts, architecture and proposal reviews, security assessments, reliability and AI plans, and learning and team-development guidance.",
+    "developerName": "O'Reilly Media",
+    "category": "productivity",
+    "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "defaultPrompt": [
+      "Help me decide whether to adopt platform engineering.",
+      "Review this architecture and find the trade-offs.",
+      "Build a 30-60-90 plan for my new domain."
+    ]
+  }
+}
