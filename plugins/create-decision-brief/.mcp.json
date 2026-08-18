@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "oreilly-expert-intelligence": {
+      "type": "http",
+      "url": "https://api.oreilly.com/api/expert/v1/mcp"
+    }
+  }
+}

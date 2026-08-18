@@ -15,16 +15,6 @@ Output is grounded in what practitioners have actually published — every claim
 back to the O'Reilly learning platform, and the skill is instructed never to cite a title, author,
 or link that didn't surface in its search.
 
-## Before you install
-
-You need two things:
-
-- **An O'Reilly learning platform account.** The skill's answers come from O'Reilly's library;
-  without an account there is nothing to search.
-- **The O'Reilly Expert Intelligence MCP server connected to your agent.** This is the connector
-  that lets Claude (or Codex) search O'Reilly content. See the
-  [MCP guide](https://www.oreilly.com/online-learning/support/mcp-guide.html) for setup steps.
-
 ## Install
 
 Expand the path that matches your setup. **Whichever you use, restart your session or app
@@ -83,7 +73,15 @@ with the **Download raw file** button, then:
 
 **Important:** When using this method you won't receive updates to this skill.
 
+
 </details>
+
+## Requirements
+
+An **O'Reilly learning platform account** is required to search the library. When installed as a
+plugin, the O'Reilly Expert Intelligence MCP server is included automatically. If you copy an
+individual skill manually instead, connect the MCP server yourself; see the
+[MCP guide](https://www.oreilly.com/online-learning/support/mcp-guide.html) for setup steps.
 
 ## Try it
 
@@ -94,5 +92,4 @@ with the **Download raw file** button, then:
 > What should we alert on for this service?
 
 This skill triggers based on the shape of your context and prompt. See the
-`description` field in `skills/plan-service-reliability/SKILL.md` for the full set of
-trigger conditions.
+`description` field in `skills/plan-service-reliability/SKILL.md` for the full set of trigger conditions.
