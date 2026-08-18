@@ -8,9 +8,9 @@ marketplace.
 
 ## What you get
 
-All 11 Expert Intelligence skills in one install: decision briefs, delivery forecasts, architecture
-and proposal reviews, security assessments, reliability and AI plans, and learning and team-
-development guidance.
+All Expert Intelligence skills in one install: decision briefs, delivery forecasts, architecture and
+proposal reviews, security assessments, reliability and AI plans, and learning and team-development
+guidance.
 
 Output is grounded in what practitioners have actually published — every claim carries a citation
 back to the O'Reilly learning platform, and the skill is instructed never to cite a title, author,

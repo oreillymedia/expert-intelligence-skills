@@ -29,9 +29,47 @@ The repo is a **plugin marketplace** for Claude and Codex.
 ## Install
 
 Install [`oreilly-expert-intelligence`](plugins/oreilly-expert-intelligence) for the complete
-complete toolkit. To install one skill instead, choose it from the table above; each skill's README
-covers what it produces, the prompts it fires on, and step-by-step install instructions for Claude
-desktop, the Claude CLI, and Codex.
+toolkit. Expand the instructions for your setup below.
+
+<details>
+<summary><b>Claude desktop</b></summary>
+
+1. Open **Customize**, then **Plugins**.
+2. Click **+**, then **Add marketplace**, then **Add from a repository**.
+3. Paste `oreillymedia/expert-intelligence-skills`.
+4. Install **O'Reilly Expert Intelligence** from the list.
+
+Anthropic's walkthrough has the current UI:
+https://support.claude.com/en/articles/13837440-use-plugins-in-claude
+
+</details>
+
+<details>
+<summary><b>Claude CLI</b></summary>
+
+From inside a session:
+
+```
+/plugin marketplace add oreillymedia/expert-intelligence-skills
+/plugin install oreilly-expert-intelligence@expert-intelligence-skills
+```
+
+</details>
+
+<details>
+<summary><b>Codex</b></summary>
+
+For both the Codex CLI and Codex desktop, use the terminal to add the marketplace:
+
+```
+codex plugin marketplace add oreillymedia/expert-intelligence-skills
+codex plugin add oreilly-expert-intelligence@expert-intelligence-skills
+```
+
+</details>
+
+To install one skill instead, choose it from the table above; each skill's README covers what it
+produces, the prompts it fires on, and step-by-step install instructions.
 
 After installing, restart your session or app — skills are discovered at startup. Then just
 describe your problem. Skills trigger on the shape of the request, so you don't need to name one.
