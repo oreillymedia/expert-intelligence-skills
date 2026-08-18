@@ -8,15 +8,12 @@ Expert Intelligence MCP tools, then writes to a specific output shape: a half-pa
 STRIDE threat model, a 30-60-90 ramp plan. Every claim carries a link back to the book, video, or
 event it came from, and each skill is instructed never to cite a source that didn't actually surface.
 
-The repo is a **plugin marketplace**. Install the complete
-[`oreilly-expert-intelligence`](plugins/oreilly-expert-intelligence) toolkit or a single skill, in
-Claude or Codex.
+The repo is a **plugin marketplace** for Claude and Codex.
 
 ## Skills
 
 | Category             | Skill                                                                            | What it does                                                                       |
 | -------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| All skills           | [`oreilly-expert-intelligence`](plugins/oreilly-expert-intelligence)             | Installs all Expert Intelligence skills in one plugin                              |
 | De-risk a decision   | [`create-decision-brief`](plugins/create-decision-brief)                         | Turns a "should we?" into a memo-ready recommendation grounded in expert consensus |
 | De-risk a decision   | [`forecast-project-delivery`](plugins/forecast-project-delivery)                 | Pressure-tests a plan into realistic timelines and delivery risks                  |
 | De-risk a decision   | [`assess-team-structure`](plugins/assess-team-structure)                         | Diagnoses team structure problems against expert org-design frameworks             |
@@ -29,20 +26,19 @@ Claude or Codex.
 | Grow the team        | [`plan-domain-rampup`](plugins/plan-domain-rampup)                               | Builds a 30-60-90 day plan for stepping into an unfamiliar domain                  |
 | Grow the team        | [`create-learning-plan`](plugins/create-learning-plan)                           | Sequences expert content into a learning path for a career transition              |
 
-## Requirements
-
-The O'Reilly Expert Intelligence MCP server must be connected to your agent. The skills call
-`ask_oreilly_experts`, `search_oreilly_content`, and `get_oreilly_citation`; without those tools a
-skill still triggers but has nothing to ground its answer in. Access requires an O'Reilly learning
-platform account.
-
-The skills themselves ship no MCP servers, no hooks, and no executable code — each one is a
-`SKILL.md` instruction file.
-
 ## Install
 
-Click a skill in the table above — each skill's README covers what it produces, the prompts it
-fires on, and step-by-step install instructions for Claude desktop, the Claude CLI, and Codex.
+Install [`oreilly-expert-intelligence`](plugins/oreilly-expert-intelligence) for the complete
+11-skill toolkit. To install one skill instead, choose it from the table above; each skill's README
+covers what it produces, the prompts it fires on, and step-by-step install instructions for Claude
+desktop, the Claude CLI, and Codex.
 
 After installing, restart your session or app — skills are discovered at startup. Then just
 describe your problem. Skills trigger on the shape of the request, so you don't need to name one.
+
+## Requirements
+
+An O'Reilly learning platform account is required to search the library. When installed as a
+plugin, the O'Reilly Expert Intelligence MCP server is included automatically. If you copy a skill
+manually instead, connect the MCP server yourself; the skills call `ask_oreilly_experts`,
+`search_oreilly_content`, and `get_oreilly_citation` to ground their answers.
