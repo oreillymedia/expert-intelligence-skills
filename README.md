@@ -29,7 +29,7 @@ The repo is a **plugin marketplace** for Claude and Codex.
 ## Install
 
 Install [`oreilly-expert-intelligence`](plugins/oreilly-expert-intelligence) for the complete
-11-skill toolkit. To install one skill instead, choose it from the table above; each skill's README
+complete toolkit. To install one skill instead, choose it from the table above; each skill's README
 covers what it produces, the prompts it fires on, and step-by-step install instructions for Claude
 desktop, the Claude CLI, and Codex.
 
