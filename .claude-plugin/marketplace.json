@@ -196,6 +196,23 @@
         "expert-intelligence",
         "citations"
       ]
+    },
+    {
+      "name": "oreilly-expert-intelligence",
+      "source": "./plugins/oreilly-expert-intelligence",
+      "description": "A cited expert research toolkit for engineering decisions, delivery, reliability, security, and team growth.",
+      "displayName": "O'Reilly Expert Intelligence",
+      "version": "0.1.0",
+      "author": {
+        "name": "O'Reilly Media",
+        "url": "https://www.oreilly.com"
+      },
+      "category": "productivity",
+      "keywords": [
+        "oreilly",
+        "expert-intelligence",
+        "citations"
+      ]
     }
   ]
 }

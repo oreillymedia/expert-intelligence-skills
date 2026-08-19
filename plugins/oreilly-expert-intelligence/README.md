@@ -1,15 +1,16 @@
-# Team Assessment
+# O'Reilly Expert Intelligence
 
-Diagnoses team structure problems against expert org-design frameworks.
+A cited expert research toolkit for engineering decisions, delivery, reliability, security, and team
+growth.
 
 Part of the [expert-intelligence-skills](https://github.com/oreillymedia/expert-intelligence-skills)
 marketplace. 
 
 ## What you get
 
-A diagnosis of what's actually causing the friction — coupling, cognitive load, ownership gaps —
-read against published org-design frameworks, with the changes worth making and the ones that would
-just reshuffle the org chart.
+All Expert Intelligence skills in one install: decision briefs, delivery forecasts, architecture and
+proposal reviews, security assessments, reliability and AI plans, and learning and team-development
+guidance.
 
 Output is grounded in what practitioners have actually published — every claim carries a citation
 back to the O'Reilly learning platform, and the skill is instructed never to cite a title, author,
@@ -26,7 +27,7 @@ afterward** so the new skill is picked up.
 1. Open **Customize**, then **Plugins**.
 2. Click **+**, then **Add marketplace**, then **Add from a repository**.
 3. Paste `oreillymedia/expert-intelligence-skills`.
-4. Install **Team Assessment** from the list.
+4. Install **O'Reilly Expert Intelligence** from the list.
 
 Anthropic's walkthrough has the current UI:
 https://support.claude.com/en/articles/13837440-use-plugins-in-claude
@@ -40,7 +41,7 @@ From inside a session:
 
 ```
 /plugin marketplace add oreillymedia/expert-intelligence-skills
-/plugin install assess-team-structure@expert-intelligence-skills
+/plugin install oreilly-expert-intelligence@expert-intelligence-skills
 ```
 
 </details>
@@ -52,7 +53,7 @@ For both the Codex CLI and Codex desktop, you must use the terminal to add the m
 
 ```
 codex plugin marketplace add oreillymedia/expert-intelligence-skills
-codex plugin add assess-team-structure@expert-intelligence-skills
+codex plugin add oreilly-expert-intelligence@expert-intelligence-skills
 ```
 
 </details>
@@ -60,19 +61,7 @@ codex plugin add assess-team-structure@expert-intelligence-skills
 <details>
 <summary><b>Manual: copy the file</b> — works anywhere</summary>
 
-Download
-[SKILL.md](https://github.com/oreillymedia/expert-intelligence-skills/blob/main/plugins/assess-team-structure/skills/assess-team-structure/SKILL.md)
-with the **Download raw file** button, then:
-
-- **Claude desktop, web, or Cowork:** open **Customize** → **Skills**, click **Add** → **Upload
-  skill**, and drop in the `.md` file — it's accepted as-is, no zipping needed. One upload covers
-  both Chat and Cowork.
-- **Claude Code or Codex CLI:** save it, filename unchanged, as `assess-team-structure/SKILL.md` inside
-  `~/.claude/skills/` or `~/.codex/skills/`. This route is CLI-only — the desktop and web apps
-  don't read those directories.
-
-**Important:** When using this method you won't receive updates to this skill.
-
+The all-in-one plugin is available through the marketplaces above. To install a skill manually, use that individual skill's README.
 
 </details>
 
@@ -85,11 +74,11 @@ individual skill manually instead, connect the MCP server yourself; see the
 
 ## Try it
 
-> Our team keeps blocking on other teams — why?
+> Help me decide whether to adopt platform engineering.
 >
-> Diagnose our platform team's structure.
+> Review this architecture and find the trade-offs.
 >
-> Should we split this 30-person team?
+> Build a 30-60-90 plan for my new domain.
 
 This skill triggers based on the shape of your context and prompt. See the
-`description` field in `skills/assess-team-structure/SKILL.md` for the full set of trigger conditions.
+`description` field in the individual `SKILL.md` files for the full set of trigger conditions.
