@@ -33,9 +33,11 @@ TEMPLATE = BUILD_DIR / "plugin-readme.template.md"
 DEFAULT_SOURCE = Path.home() / "Projects/oreilly/orm-skill-creator/oreilly-created-skills/release-skills"
 
 MARKETPLACE_NAME = "expert-intelligence-skills"
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 AUTHOR = {"name": "O'Reilly Media", "url": "https://www.oreilly.com"}
 HOMEPAGE = "https://github.com/oreillymedia/expert-intelligence-skills"
+DOCUMENTATION_PAGE = "https://learning.oreilly.com/apidocs/mcp/expert/"
+MCP_SERVERS = "./.mcp.json"
 
 # Order here is the order Codex renders plugins in, and the order of the README table.
 # Grouped by the buyer-facing bucket rather than alphabetically.
@@ -274,13 +276,26 @@ def mcp_config() -> dict:
 def claude_manifest(skill: dict) -> dict:
     return {
         "name": skill["name"],
+        "displayName": "O'Reilly Expert Intelligence",
         "version": VERSION,
         "description": skill["one_liner"],
         "author": AUTHOR,
-        "homepage": HOMEPAGE,
+        "homepage": DOCUMENTATION_PAGE,
         "repository": HOMEPAGE,
         "license": "Apache-2.0",
-        "keywords": ["oreilly", "expert-intelligence", "citations", skill["category"]],
+        "keywords": [
+            "oreilly",
+            "expert-intelligence",
+            "citations",
+            "software architecture",
+            "technical advice",
+            "code review",
+            "security review",
+            "software development",
+            skill["category"],
+        ],
+        "skills": "./skills/",
+        "mcpServers": MCP_SERVERS,
     }
 
 
@@ -290,18 +305,22 @@ def codex_manifest(skill: dict) -> dict:
         "version": VERSION,
         "description": skill["one_liner"],
         "author": AUTHOR,
-        "homepage": HOMEPAGE,
+        "homepage": DOCUMENTATION_PAGE,
         "repository": HOMEPAGE,
         "license": "Apache-2.0",
         "keywords": ["oreilly", "expert-intelligence", "citations", skill["category"]],
         "skills": "./skills/",
+        "mcpServers": MCP_SERVERS,
         "interface": {
             "displayName": skill["display_name"],
             "shortDescription": skill["one_liner"],
             "longDescription": skill["what_you_get"],
             "developerName": "O'Reilly Media",
             "category": skill["category"],
+            "capabilities": ["Read"],
             "websiteURL": WEBSITE_URL,
+            "privacyPolicyURL": "https://www.oreilly.com/privacy.html",
+            "termsOfServiceURL": "https://www.oreilly.com/terms/",
             "defaultPrompt": skill["prompts"][:3],
         },
     }
