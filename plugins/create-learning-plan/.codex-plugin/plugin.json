@@ -1,12 +1,12 @@
 {
   "name": "create-learning-plan",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Sequences expert content into a learning path for a career transition.",
   "author": {
     "name": "O'Reilly Media",
     "url": "https://www.oreilly.com"
   },
-  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "homepage": "https://learning.oreilly.com/apidocs/mcp/expert/",
   "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
   "license": "Apache-2.0",
   "keywords": [
@@ -16,13 +16,19 @@
     "learning"
   ],
   "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Learning Plan",
     "shortDescription": "Sequences expert content into a learning path for a career transition.",
     "longDescription": "A learning path across books, video, and live events that says why each item comes when it does — the sequencing is the value a reading list doesn't give you. Paced to the hours you actually have, with behavioral markers for whether it's working.",
     "developerName": "O'Reilly Media",
     "category": "learning",
+    "capabilities": [
+      "Read"
+    ],
     "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "privacyPolicyURL": "https://www.oreilly.com/privacy.html",
+    "termsOfServiceURL": "https://www.oreilly.com/terms/",
     "defaultPrompt": [
       "Plan my move from backend to ML.",
       "Learning path to staff engineer.",

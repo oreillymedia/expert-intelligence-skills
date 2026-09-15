@@ -1,12 +1,12 @@
 {
   "name": "plan-service-reliability",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Drafts SLOs and an error-budget policy for a new or evolving service.",
   "author": {
     "name": "O'Reilly Media",
     "url": "https://www.oreilly.com"
   },
-  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "homepage": "https://learning.oreilly.com/apidocs/mcp/expert/",
   "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
   "license": "Apache-2.0",
   "keywords": [
@@ -16,13 +16,19 @@
     "monitoring"
   ],
   "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Reliability Plan",
     "shortDescription": "Drafts SLOs and an error-budget policy for a new or evolving service.",
     "longDescription": "Candidate SLIs and SLOs sized to what the service actually does and who depends on it, plus an error-budget policy that says what happens when the budget burns — grounded in how SRE practitioners describe setting these, not in round numbers.",
     "developerName": "O'Reilly Media",
     "category": "monitoring",
+    "capabilities": [
+      "Read"
+    ],
     "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "privacyPolicyURL": "https://www.oreilly.com/privacy.html",
+    "termsOfServiceURL": "https://www.oreilly.com/terms/",
     "defaultPrompt": [
       "Draft SLOs for our new checkout service.",
       "Set an error-budget policy for this API.",

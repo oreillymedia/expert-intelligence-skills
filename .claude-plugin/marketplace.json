@@ -15,7 +15,7 @@
       "source": "./plugins/create-decision-brief",
       "description": "Turns a \"should we?\" into a memo-ready recommendation grounded in expert consensus.",
       "displayName": "Decision Brief",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
@@ -32,7 +32,7 @@
       "source": "./plugins/compare-implementation-approaches",
       "description": "Compares implementation approaches with cited trade-offs and a code example.",
       "displayName": "Implementation Advisor",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
@@ -49,7 +49,7 @@
       "source": "./plugins/review-architecture-decision",
       "description": "Evaluates a system design against expert trade-off analysis.",
       "displayName": "Architecture Decision Review",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
@@ -66,7 +66,7 @@
       "source": "./plugins/review-technical-proposal",
       "description": "Reviews an RFC for gaps and generates the pushback questions you'll get.",
       "displayName": "Technical Proposal Review",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
@@ -83,7 +83,7 @@
       "source": "./plugins/evaluate-security-risk",
       "description": "Produces a STRIDE threat model, flagging the risks teams commonly miss.",
       "displayName": "Security Risk Review",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
@@ -100,7 +100,7 @@
       "source": "./plugins/forecast-project-delivery",
       "description": "Pressure-tests a plan into realistic timelines and delivery risks.",
       "displayName": "Delivery Forecast",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
@@ -117,7 +117,7 @@
       "source": "./plugins/plan-service-reliability",
       "description": "Drafts SLOs and an error-budget policy for a new or evolving service.",
       "displayName": "Reliability Plan",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
@@ -134,7 +134,7 @@
       "source": "./plugins/plan-production-ready-ai",
       "description": "Recommends an ML deployment strategy calibrated to your team's maturity.",
       "displayName": "Production Ready AI",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
@@ -151,7 +151,7 @@
       "source": "./plugins/assess-team-structure",
       "description": "Diagnoses team structure problems against expert org-design frameworks.",
       "displayName": "Team Assessment",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
@@ -168,7 +168,7 @@
       "source": "./plugins/plan-domain-rampup",
       "description": "Builds a 30-60-90 day plan for stepping into an unfamiliar domain.",
       "displayName": "Ramp Plan",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
@@ -185,7 +185,7 @@
       "source": "./plugins/create-learning-plan",
       "description": "Sequences expert content into a learning path for a career transition.",
       "displayName": "Learning Plan",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
@@ -202,7 +202,7 @@
       "source": "./plugins/oreilly-expert-intelligence",
       "description": "A cited expert research toolkit for engineering decisions, delivery, reliability, security, and team growth.",
       "displayName": "O'Reilly Expert Intelligence",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "O'Reilly Media",
         "url": "https://www.oreilly.com"
