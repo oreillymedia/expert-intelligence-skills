@@ -1,12 +1,12 @@
 {
   "name": "review-architecture-decision",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Evaluates a system design against expert trade-off analysis.",
   "author": {
     "name": "O'Reilly Media",
     "url": "https://www.oreilly.com"
   },
-  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "homepage": "https://learning.oreilly.com/apidocs/mcp/expert/",
   "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
   "license": "Apache-2.0",
   "keywords": [
@@ -16,13 +16,19 @@
     "development"
   ],
   "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Architecture Decision Review",
     "shortDescription": "Evaluates a system design against expert trade-off analysis.",
     "longDescription": "A review of your design that names the trade-offs you've implicitly accepted, checks them against how practitioners describe the same decisions, and flags the ones that tend to bite later. Credits what's sound instead of manufacturing objections.",
     "developerName": "O'Reilly Media",
     "category": "development",
+    "capabilities": [
+      "Read"
+    ],
     "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "privacyPolicyURL": "https://www.oreilly.com/privacy.html",
+    "termsOfServiceURL": "https://www.oreilly.com/terms/",
     "defaultPrompt": [
       "Review my event-driven design's trade-offs.",
       "Poke holes in this multi-tenant architecture.",

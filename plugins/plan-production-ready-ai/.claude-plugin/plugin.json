@@ -1,18 +1,26 @@
 {
   "name": "plan-production-ready-ai",
-  "version": "0.1.0",
+  "displayName": "O'Reilly Expert Intelligence",
+  "version": "0.1.1",
   "description": "Recommends an ML deployment strategy calibrated to your team's maturity.",
   "author": {
     "name": "O'Reilly Media",
     "url": "https://www.oreilly.com"
   },
-  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "homepage": "https://learning.oreilly.com/apidocs/mcp/expert/",
   "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
   "license": "Apache-2.0",
   "keywords": [
     "oreilly",
     "expert-intelligence",
     "citations",
+    "software architecture",
+    "technical advice",
+    "code review",
+    "security review",
+    "software development",
     "deployment"
-  ]
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
 }

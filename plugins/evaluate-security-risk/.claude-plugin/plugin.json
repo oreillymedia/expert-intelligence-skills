@@ -1,18 +1,26 @@
 {
   "name": "evaluate-security-risk",
-  "version": "0.1.0",
+  "displayName": "O'Reilly Expert Intelligence",
+  "version": "0.1.1",
   "description": "Produces a STRIDE threat model, flagging the risks teams commonly miss.",
   "author": {
     "name": "O'Reilly Media",
     "url": "https://www.oreilly.com"
   },
-  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "homepage": "https://learning.oreilly.com/apidocs/mcp/expert/",
   "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
   "license": "Apache-2.0",
   "keywords": [
     "oreilly",
     "expert-intelligence",
     "citations",
+    "software architecture",
+    "technical advice",
+    "code review",
+    "security review",
+    "software development",
     "security"
-  ]
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
 }

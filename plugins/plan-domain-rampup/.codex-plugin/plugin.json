@@ -1,12 +1,12 @@
 {
   "name": "plan-domain-rampup",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Builds a 30-60-90 day plan for stepping into an unfamiliar domain.",
   "author": {
     "name": "O'Reilly Media",
     "url": "https://www.oreilly.com"
   },
-  "homepage": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "homepage": "https://learning.oreilly.com/apidocs/mcp/expert/",
   "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
   "license": "Apache-2.0",
   "keywords": [
@@ -16,13 +16,19 @@
     "learning"
   ],
   "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Ramp Plan",
     "shortDescription": "Builds a 30-60-90 day plan for stepping into an unfamiliar domain.",
     "longDescription": "A 30-60-90 plan with observable milestones, the reading and events that support each phase, and agendas for the conversations to have with the people who already own the domain. Sequenced so you're credible early rather than well-read late.",
     "developerName": "O'Reilly Media",
     "category": "learning",
+    "capabilities": [
+      "Read"
+    ],
     "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "privacyPolicyURL": "https://www.oreilly.com/privacy.html",
+    "termsOfServiceURL": "https://www.oreilly.com/terms/",
     "defaultPrompt": [
       "I'm taking over search — build a ramp plan.",
       "30-60-90 for a domain I don't know yet.",
