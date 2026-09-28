@@ -1,15 +1,17 @@
 ---
 name: plan-domain-rampup
-description: Build a credible 30-60-90 day plan for someone stepping into an unfamiliar domain — grounded in both the technical fundamentals of that domain and management/onboarding best practices from O'Reilly. Works for a manager inheriting a team in a new area (e.g. a backend manager taking over data engineering) or an IC moving into a new technical domain. Use this skill whenever someone asks for an onboarding plan, a 30-60-90, a ramp plan, a "first 90 days" plan, or help getting up to speed in an area they don't yet know — including what to learn, who to talk to, and what early mistakes to avoid. Trigger on prompts like "build me a 30-60-90 to ramp into managing X," "I just inherited a Y team and have never done Y," or "help me get up to speed on Z" — even a one-line description of the transition is enough.
+description: Creates a staged, role-specific ramp plan into an unfamiliar technical domain using cited O'Reilly domain fundamentals and onboarding guidance. Use when the primary task is planning a manager's or individual contributor's early effectiveness—typically over the first 90 days—including learning priorities, stakeholder and team discovery, early contributions, success markers, and decisions to defer. The plan may include assessing an inherited team as part of the ramp; for a standalone team-health diagnosis, use assess-team-structure, and for a primarily content-focused learning curriculum, use create-learning-plan.
 ---
 
 # Ramp Plan
 
-You're helping someone step into a domain they don't yet know and look competent doing it — fast, and without the avoidable early mistakes. The output is a phased 30-60-90 day plan plus ready-to-use agendas for the key early conversations.
+Create a role-specific 30-60-90 day ramp plan with domain learning, early contributions, decisions to defer, observable success markers, and ready-to-use conversation agendas. Keep manager ramps focused on people, ownership, and judgment; keep individual-contributor ramps focused on technical fluency and useful delivery.
 
-Two things make a ramp plan credible instead of generic. First, it's grounded in the *actual* fundamentals of the target domain (pulled from expert content), not hand-wavy "learn the basics." Second, it respects the difference between ramping as a manager and ramping as an IC: a manager's first 90 days are mostly about people, ownership, and not breaking things they don't yet understand; an IC's are mostly about building working technical fluency and shipping something real. Figure out which you're dealing with early.
+## Source and citation rules
 
-## Step 1: Establish the transition
+Use only sources returned by the O'Reilly MCP tools. Tool names below are unqualified because the server name is user-configured; when the runtime requires qualified names, prepend the configured server name (for example, `oreilly:ask_oreilly_experts`). Cite each selected result as `[title](url) by authors`, using `product_title` when the result provides it instead of `title`. Copy the title and URL exactly from that same result; do not alter, normalize, shorten, repair, or reconstruct the URL. Use a string-valued `authors` field unchanged; for a list, join the returned names in order with commas. When `get_oreilly_citation` returns a fully rendered `citation_format`, use it unchanged. Never invent or reconstruct metadata or quotations. Remove a citation that cannot be verified against the tool result. Present uncited conclusions as your own analysis or omit them.
+
+## Step 1: Frame the transition
 
 Get clear on:
 
@@ -18,9 +20,16 @@ Get clear on:
 - **Their role in it** — managing the domain, or doing the work? This reshapes the whole plan.
 - **Context** — team size and maturity if managing; timeline pressure; any early decision already looming.
 
-If the role (manager vs. IC) or the domain is unclear, ask one focused question before proceeding — it changes everything downstream.
+Ask one focused question only when the role or domain is unclear. Otherwise proceed and label assumptions.
 
-## Step 2: Query the O'Reilly MCP — two tracks
+## Step 2: Research domain and transition tracks
+
+Research in this order:
+
+1. Turn the target-domain fundamentals and transition craft into targeted questions.
+2. Use `ask_oreilly_experts` and/or `search_oreilly_content` as appropriate for the research need, following their tool descriptions.
+3. Select only results that directly support a learning priority, conversation, deliverable, or decision to defer.
+4. Draft from the verified evidence. If no directly relevant source surfaces, state the evidence gap instead of citing a weaker source.
 
 Ramp plans need both the **domain fundamentals** and the **transition craft**. Search both:
 
@@ -31,14 +40,14 @@ Ramp plans need both the **domain fundamentals** and the **transition craft**. S
 
 *Transition track:*
 - "manager's first 90 days new team best practices" (if managing)
-- "onboarding into a new technical domain effectively" (if IC)
+- "onboarding into a new technical domain effectively" (if an individual contributor)
 - "early decisions new managers get wrong"
 
-Use `ask_oreilly_experts` and `search_oreilly_content`; pull `get_oreilly_citation` on strong hits (≥0.75). Anchors that tend to serve well (a guide — cite what actually surfaces, and search whatever domain the user named): for data engineering, *Fundamentals of Data Engineering* (Reis & Housley) and *97 Things Every Data Engineer Should Know* (Macey); for the management side, *Engineering Manager's Handbook* (Evans). Swap in the right domain sources for whatever domain is in play.
+Search the user's actual domain and transition rather than forcing generic onboarding or familiar domain titles.
 
 How much recency matters depends on the domain: a fast-moving one (ML infrastructure, AI tooling, security) needs the newest coverage you can find, since the fundamentals themselves are still shifting; a more settled one (relational databases, core distributed-systems theory) can lean on an older, well-established text without losing accuracy. Judge which case you're in before defaulting to "newer is better."
 
-## Step 3: Write the plan
+## Step 3: Draft the ramp plan
 
 Structure it as three phases with a clear intent for each, then the agendas. Keep each item concrete — a plan someone can act on Monday.
 
@@ -49,7 +58,7 @@ Structure it as three phases with a clear intent for each, then the agendas. Kee
 **The shape of this ramp:** one or two sentences on the strategy — e.g., "You're managing, not doing, so days 1–30 are about understanding what the team owns and who holds what, not learning to write Spark jobs."
 
 **Days 1–30 — Learn & listen**
-- **Learn:** the specific concepts/tools to get fluent in, with a cited source for each. *[Fundamentals of Data Engineering](url) by Reis & Housley — read chs. X–Y on the lifecycle.*
+- **Learn:** the specific concepts or tools to become fluent in. Cite the selected result following the source and citation rules above and give a concrete scope, such as selected chapters or modules, only when the returned evidence supports it.
 - **Conversations:** who to talk to and what to ask.
 - **Avoid:** the early decisions/mistakes to *not* make yet, and why.
 
@@ -68,6 +77,17 @@ Provide ready-to-use agendas for the 2–4 highest-leverage early conversations 
 
 ---
 
+## Step 4: Verify the ramp plan
+
+Before responding:
+
+1. Check that activities fit the role, starting point, domain, and 90-day horizon.
+2. Confirm that each phase builds on the previous one and includes observable success markers.
+3. Compare every citation with the MCP result — title, author, edition, and URL must match exactly — and remove any citation you cannot verify rather than repairing it.
+4. Remove unrealistic learning goals or decisions that require expertise the user cannot build in the period.
+
+If any check fails, revise and run these checks again. Do not respond until all of them pass.
+
 ## Principles
 
-Cite as markdown links with author; cite only what actually surfaced — never invent a title, author, or link. When the platform carries multiple editions of a title, use the newest edition unless the user specifically needs an older one. Ground the domain-learning items in real content so the reader trusts what to read and in what order. Be honest about what can't be learned in 90 days — the goal is competence and good judgment about what to defer, not fake mastery. Tune depth to the role: don't hand a manager an IC's reading list, or vice versa.
+Prefer the newest applicable edition for fast-moving domains; for durable fundamentals, relevance may outrank recency. The goal is useful competence and sound judgment about what to defer, not mastery in 90 days. Keep manager and individual-contributor ramps materially different.

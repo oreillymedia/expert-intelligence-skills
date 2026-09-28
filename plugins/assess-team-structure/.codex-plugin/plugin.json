@@ -1,6 +1,6 @@
 {
   "name": "assess-team-structure",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Diagnoses team structure problems against expert org-design frameworks.",
   "author": {
     "name": "O'Reilly Media",

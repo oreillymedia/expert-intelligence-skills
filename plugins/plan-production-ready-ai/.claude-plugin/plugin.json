@@ -1,7 +1,7 @@
 {
   "name": "plan-production-ready-ai",
   "displayName": "O'Reilly Expert Intelligence",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Recommends an ML deployment strategy calibrated to your team's maturity.",
   "author": {
     "name": "O'Reilly Media",

@@ -1,6 +1,6 @@
 {
   "name": "plan-service-reliability",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Drafts SLOs and an error-budget policy for a new or evolving service.",
   "author": {
     "name": "O'Reilly Media",

@@ -1,37 +1,45 @@
 ---
 name: evaluate-security-risk
-description: >-
-  Produce a structured threat model for a new or changing service — organized by a recognized framework (STRIDE by default), highlighting the threats teams most often miss before launch, with an expert-cited source and mitigation for each — grounded in O'Reilly's application-security and threat-modeling literature. Use this skill whenever someone is designing or reviewing a service and wants a threat model, security risk review, STRIDE analysis, or help finding the security gaps before shipping: auth/SSO/OIDC flows, token handling, APIs, data stores, new integrations. Trigger on prompts like "walk me through a STRIDE threat model for our new SSO service," "threat-model this design," "what security risks are we missing," or "review this for security before launch." This is defensive security work — identifying and mitigating risks, not exploiting them.
+description: Creates a structured defensive threat model for a proposed, changing, or existing service using cited O'Reilly security sources. Use when the primary task is identifying assets, data flows, trust boundaries, threats, prioritized mitigations, or STRIDE coverage for authentication, tokens, APIs, uploads, data stores, integrations, or service designs. A technical proposal, compliance requirement, or past incident may provide context. For proposal-wide approval review, use review-technical-proposal; for broader system-design trade-offs, use review-architecture- decision. Not intended for step-by-step exploit development, standalone compliance-control audits, or real-time security-incident investigation and response.
 ---
 
 # Security Risk Review
 
-You're helping a team find the security holes in a design before an attacker does — and specifically the ones teams *routinely* miss, because those are where real breaches come from. The output reads as professional security work: a structured threat model, framework-organized, with each threat tied to a cited source and a concrete mitigation.
+Produce a defensive threat model that maps trust boundaries, prioritizes material threats, and pairs each threat with a concrete mitigation. Explain attack mechanisms only to the depth needed to understand and reduce the risk; do not provide step-by-step exploitation instructions.
 
-This is defensive: the goal is to surface and close risks. Describe threats at the level needed to understand and mitigate them — the mechanism and the fix — not step-by-step exploitation instructions.
+## Source and citation rules
 
-## Step 1: Understand the system and confirm the framework
+Use only sources returned by the O'Reilly MCP tools. Tool names below are unqualified because the server name is user-configured; when the runtime requires qualified names, prepend the configured server name (for example, `oreilly:ask_oreilly_experts`). Cite each selected result as `[title](url) by authors`, using `product_title` when the result provides it instead of `title`. Copy the title and URL exactly from that same result; do not alter, normalize, shorten, repair, or reconstruct the URL. Use a string-valued `authors` field unchanged; for a list, join the returned names in order with commas. When `get_oreilly_citation` returns a fully rendered `citation_format`, use it unchanged. Never invent or reconstruct metadata or quotations. Remove a citation that cannot be verified against the tool result. Present uncited conclusions as your own analysis or omit them.
 
-Extract the design: the components, trust boundaries, data flows, entry points, and what's sensitive (credentials, tokens, PII, money). A threat model is only as good as the boundaries you draw, so get those right first — where does untrusted input cross into trusted territory?
+## Step 1: Map the system and select the framework
 
-Then ask the user one quick question: **do they have a preferred framework** (STRIDE, PASTA, LINDDUN, attack trees)? If yes, use theirs. If not, default to STRIDE and let the expert content that surfaces shape the specifics. Keep the emphasis on commonly-missed threats regardless of framework.
+Extract the components, data flows, entry points, identities, sensitive assets, and trust boundaries. Trace every path that bypasses the main application, such as signed URLs or direct object-store access. Treat anything that parses or executes attacker-controlled input as its own boundary even when it runs inside a nominally trusted network. Do not collapse credential-to-identity mapping, storage access, data-layer authorization, and untrusted-file processing into one generic boundary.
 
-## Step 2: Query the O'Reilly MCP
+Use the user's requested framework. Otherwise default to STRIDE without asking. If a diagram would materially clarify data flow and bypass paths, include a small one, but ensure its trust-zone labels preserve rather than hide hostile-input boundaries.
 
-Search both the framework method and the domain-specific threats — the specifics are where the misses hide. Use `ask_oreilly_experts` and `search_oreilly_content`:
+## Step 2: Research the framework and system-specific threats
+
+Research in this order:
+
+1. Turn the framework coverage and system-specific threats into targeted questions.
+2. Use `ask_oreilly_experts` and/or `search_oreilly_content` as appropriate for the research need, following their tool descriptions.
+3. Select only results that directly support a concrete threat, mitigation, or priority.
+4. Draft from the verified evidence. If no directly relevant source surfaces, state the evidence gap instead of citing a weaker source.
+
+Search both the framework method and the domain-specific threats — the specifics are where the misses hide:
 
 - "[framework] threat modeling methodology and categories"
 - "[domain] commonly missed / overlooked security threats" (e.g., "OIDC token replay refresh token rotation consent phishing")
 - "[component] attack patterns and mitigations"
 - "security risks teams underestimate in [system type]"
 
-Pull `get_oreilly_citation` on strong hits (≥0.75). Anchors that tend to serve well (a guide — cite what actually surfaces): *Threat Modeling* (Shostack — canonical STRIDE anchor), *Software Security for Developers* (Saikali & Spilca — protocol/token specifics), *Advanced Cyber Threat Intelligence and Hunting* (Sorensen & Tiepolo — attack flows like consent phishing), *Threat-Driven Software Development* (Howard, Holmes, Hernan). Search the actual protocols/components in play.
+Search the actual protocols and components in the design. Framework anchors such as *Threat Modeling* or *Threat-Driven Software Development* are useful only when they surface; domain-specific sources should support the concrete threats. Do not force a named title into the threat model or omit a stronger result because it is unfamiliar.
 
-Tip: query the framework broadly *and* the domain specifics separately. The framework anchor (e.g., Shostack) surfaces best on framework-first queries; the specific-threat sources surface on protocol queries. Run both so both are available to cite.
+Tip: query the framework broadly *and* the domain specifics separately. The framework anchor surfaces best on framework-first queries; the specific-threat sources surface on protocol queries. Run both so both are available to cite.
 
 Treat recency asymmetrically here. The methodology itself (STRIDE, Shostack's framework) doesn't need to be current to be right — it's foundational and still holds. But attacker techniques, protocol weaknesses, and what's "commonly missed" move fast; for the domain-specific threats, prefer the newest coverage you can find, since a dated source may be silent on the current attack surface.
 
-## Step 3: Write the threat model
+## Step 3: Draft the threat model
 
 Lead with the highest-value part — the missed threats — then the full model.
 
@@ -43,7 +51,7 @@ Lead with the highest-value part — the missed threats — then the full model.
 - Brief: components, the boundaries, and what's sensitive.
 
 **Most-often-missed threats** *(the payload)*
-- **[Threat]** — what it is, why teams miss it, the impact, and the mitigation. Cite the source. *[Software Security for Developers](url) by Saikali & Spilca covers refresh-token rotation…*
+- **[Threat]** — explain the mechanism, why teams miss it, the concrete impact, and the mitigation. Cite the source. Favor non-obvious boundary failures over generic advice.
 
 **Full threat model**
 
@@ -59,10 +67,22 @@ Lead with the highest-value part — the missed threats — then the full model.
 *(Adapt category rows to the chosen framework.)*
 
 **Priorities before launch**
-- The 2–4 threats to fix first, and why.
+- Rank two to four threats by likelihood, impact, and mitigation leverage. State why each outranks the remaining findings.
 
 ---
 
+## Step 4: Verify the threat model
+
+Before responding:
+
+1. Check every component, data flow, sensitive asset, and trust boundary, including bypass paths and parsers of untrusted input.
+2. Confirm that every framework category was considered, even if the final table combines or omits categories with no material finding.
+3. Confirm that priorities reflect likelihood, impact, and mitigation leverage rather than framework order.
+4. Compare every citation with the MCP result — title, author, edition, URL, and the mitigation it supports must match exactly — and remove any citation you cannot verify rather than repairing it.
+5. Remove unnecessary exploit instructions.
+
+If any check fails, revise and run these checks again. Do not respond until all of them pass.
+
 ## Principles
 
-Cite only sources that surfaced, as markdown links with author — one per threat where possible; never invent a title, author, or link. When the platform carries multiple editions of a title, use the newest edition unless the user specifically needs an older one. Keep the framing defensive: mechanisms and mitigations, not exploit recipes. Make the "commonly missed" section genuinely non-obvious — token replay, refresh-token rotation, consent-screen phishing, missing rate limits on auth endpoints — not generic "use HTTPS." Prioritize honestly; a model that flags 40 equal-weight threats is as useless as one that misses the real ones.
+Prefer the newest applicable edition for current attack surfaces, while allowing foundational framework sources to be older. Keep the framing defensive: mechanisms and mitigations, not exploit recipes. A model that lists many equal-weight threats is as unhelpful as one that misses the important boundary failures.

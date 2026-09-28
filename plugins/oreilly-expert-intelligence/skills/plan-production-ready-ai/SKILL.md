@@ -1,25 +1,38 @@
 ---
 name: plan-production-ready-ai
-description: Help a team move from "we have a model" to a deployment plan — comparing canonical approaches to model versioning, shadow/canary deployment, and drift monitoring, then recommending an approach calibrated to the team's size and infrastructure maturity — grounded in and cited to O'Reilly's MLOps literature. Use this skill whenever a team is deploying an ML/AI model to production and needs a deployment strategy, MLOps plan, rollout approach, or monitoring setup — especially when they're doing it for the first time or have limited infrastructure. Trigger on prompts like "we're deploying our first model to production, what's the right approach," "compare model versioning / shadow deployment / drift monitoring options," "how should a small team ship an ML model," or "what MLOps do we actually need." Right-size the answer to the team; don't prescribe enterprise MLOps to a team of three.
+description: Plans a production deployment for an ML or AI model using cited O'Reilly MLOps sources, covering versioning, release strategy, monitoring, rollback, and staged capability growth. Use when a team needs a right-sized model deployment, rollout, drift-monitoring, or MLOps plan; not for choosing or training the model, comparing one implementation library, or making an organization-wide AI-platform adoption decision.
 ---
 
-# Production Ready AI
+# Plan Production Ready AI
 
-You're helping a team ship a model without either winging it or drowning in MLOps machinery they don't need yet. The output compares the canonical approaches on the decisions that matter, then recommends the one that fits *this* team — because the right deployment strategy for a three-person team with no infra is very different from the right one for a platform org, and the literature has strong opinions on both.
+Produce a right-sized production deployment plan for an ML or AI model. Recommend the smallest auditable approach that manages the stated risk, and give deferred capabilities observable adoption triggers.
 
-The failure mode to avoid is over-engineering: prescribing a full feature-store-plus-model-registry-plus-automated-retraining pipeline to a team that should be shipping one model behind a flag with basic monitoring. Match the ambition to the maturity.
+Match the plan’s ambition to the team’s maturity; avoid over-engineering.
 
-## Step 1: Establish the team's context
+This is a planning task. Do not create files, update project memory, or save the team's context unless the user explicitly asks you to.
 
-The recommendation hinges on this, so get it before recommending. If it's not stated, ask one quick question: **team size and existing MLOps infrastructure?** Also useful:
+## Source and citation rules
+
+Use only sources returned by the O'Reilly MCP tools. Tool names below are unqualified because the server name is user-configured; when the runtime requires qualified names, prepend the configured server name (for example, `oreilly:ask_oreilly_experts`). Cite each selected result as `[title](url) by authors`, using `product_title` when the result provides it instead of `title`. Copy the title and URL exactly from that same result; do not alter, normalize, shorten, repair, or reconstruct the URL. Use a string-valued `authors` field unchanged; for a list, join the returned names in order with commas. When `get_oreilly_citation` returns a fully rendered `citation_format`, use it unchanged. Never invent or reconstruct metadata or quotations. Remove a citation that cannot be verified against the tool result. Present uncited conclusions as your own analysis or omit them.
+
+## Step 1: Frame the deployment context
+
+The recommendation hinges on context. Ask one focused question only when missing team size, infrastructure maturity, or model criticality could reverse the recommendation. Otherwise state assumptions. Establish:
 
 - **The model and its role** — batch or real-time? How bad is a wrong prediction (a rec ranking vs. a credit decision)?
 - **Existing infra** — any CI/CD, monitoring, model registry, or nothing yet?
 - **Constraints** — latency, scale, regulatory, on-call capacity.
 
-## Step 2: Query the O'Reilly MCP
+## Step 2: Research the deployment decisions
 
-Search each deployment dimension and the small-team/right-sizing angle. Use `ask_oreilly_experts` and `search_oreilly_content`:
+Research in this order:
+
+1. Turn model versioning, rollout, monitoring, rollback, and right-sizing into targeted questions.
+2. Use `ask_oreilly_experts` and/or `search_oreilly_content` as appropriate for the research need, following their tool descriptions.
+3. Select only results that directly support a deployment recommendation or adoption trigger.
+4. Draft from the verified evidence. If no directly relevant source surfaces, state the evidence gap instead of citing a weaker source.
+
+Search each deployment dimension and the small-team/right-sizing angle:
 
 - "model versioning approaches and when each is worth it"
 - "shadow deployment vs canary for ML models trade-offs"
@@ -27,13 +40,13 @@ Search each deployment dimension and the small-team/right-sizing angle. Use `ask
 - "minimum viable MLOps for a small team / no existing infrastructure"
 - "MLOps maturity levels what to adopt when"
 
-Pull `get_oreilly_citation` on strong hits (≥0.75). Anchors that tend to serve well (a guide — cite what actually surfaces): *Engineering MLOps* (Raj — strong on small-team ops), *The AI Product Manager's Handbook* (Bratsis — shadow deployment strategy), *Machine Learning Platform Engineering* (Tan, Padmanabhan, Mallya), *What Is MLOps? / Introducing MLOps* (Treveil, Heidmann et al). Cite what actually ranks for the specific framing.
+Search the model's actual deployment mode, risk, and team maturity; do not force an enterprise MLOps pattern or a familiar title into the plan.
 
 MLOps tooling and practice move quickly — what counts as "minimum viable" monitoring or drift detection shifts year over year. Favor the most recent coverage of each dimension; a few-year-old take can already describe a previous generation of practice, not the current one.
 
-## Step 3: Write the plan
+## Step 3: Draft the deployment plan
 
-Compare, then recommend and calibrate. Structure:
+Lead with the recommendation, then compare only the plausible alternatives needed to explain it. Do not give enterprise tooling equal space when the team's scale or maturity has already ruled it out. Structure:
 
 ---
 
@@ -42,22 +55,34 @@ Compare, then recommend and calibrate. Structure:
 **Context assumed:** team size, infra maturity, model criticality (state it plainly so the reader can correct you).
 
 **Model versioning**
-- *Options:* the canonical approaches (e.g., registry-based vs. git-tracked artifacts vs. managed service) with trade-offs, cited.
-- *Recommendation for you:* the right-sized choice and why.
+- *Recommendation for you:* the smallest auditable approach that supports reproducibility, per-decision traceability, and rollback.
+- *Alternatives considered:* briefly name only the credible next-heavier option and the condition that would justify it.
 
 **Deployment / rollout strategy**
-- *Options:* shadow, canary, blue-green, flag-gated, straight cutover — trade-offs, cited.
-- *Recommendation for you:* calibrated to criticality and infra. *[The AI Product Manager's Handbook](url) by Bratsis describes shadow deployment as…*
+- *Recommendation for you:* a staged path calibrated to criticality and existing infrastructure, with entry and exit criteria, rollback triggers, fallback behavior, and an owner.
+- Mention rejected rollout modes only when the contrast explains a consequential choice.
 
 **Drift & monitoring**
-- *Options:* what to monitor (data drift, prediction drift, performance), and how much tooling each needs, cited.
-- *Recommendation for you:* the minimum that catches real problems without a monitoring platform you can't staff.
+- *Recommendation for you:* the minimum set of data, prediction, operational, and delayed-outcome signals needed to catch the stated harm. For each alert, say what happens when it trips and who responds. Avoid a catalog of monitoring products.
 
 **Start here / add later**
 - The crawl-walk-run: what to stand up before launch vs. what to defer until the team and traffic justify it.
 
 ---
 
+## Step 4: Verify the deployment plan
+
+Before responding:
+
+1. Check that recommendations match the model's criticality, team size, infrastructure maturity, and operational capacity.
+2. Confirm that the plan distinguishes launch requirements from capabilities that can wait.
+3. Confirm that rollout includes rollback criteria and monitoring includes a response, not just a metric.
+4. Compare every citation with the MCP result — title, author, edition, and URL must match exactly — and remove any citation you cannot verify rather than repairing it.
+5. Remove tooling or process that does not manage a stated risk.
+6. Confirm that deferred capabilities have an observable adoption trigger rather than an arbitrary maturity milestone.
+
+If any check fails, revise and run these checks again. Do not respond until all of them pass.
+
 ## Principles
 
-Cite as markdown links with author; cite only what surfaced — never invent a title, author, or link. When the platform carries multiple editions of a title, use the newest edition unless the user specifically needs an older one. Always state the assumed context so a wrong assumption is easy to catch. Right-size aggressively: recommend the simplest approach that manages the actual risk, and be explicit about what the team can safely skip for now. Where the field is genuinely unsettled (drift-detection methods, retraining cadence), present the options and the trade-off rather than a false consensus.
+Prefer current coverage because MLOps tooling changes quickly. State assumptions, recommend the simplest approach that manages the stated risk, and say what can safely wait. A registry, feature store, dedicated drift platform, or automated retraining pipeline must be justified by a current requirement; otherwise name the concrete trigger for adding it later. Where practice is unsettled, present the decision criteria rather than false consensus.

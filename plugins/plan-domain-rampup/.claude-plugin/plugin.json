@@ -1,7 +1,7 @@
 {
   "name": "plan-domain-rampup",
   "displayName": "O'Reilly Expert Intelligence",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Builds a 30-60-90 day plan for stepping into an unfamiliar domain.",
   "author": {
     "name": "O'Reilly Media",
