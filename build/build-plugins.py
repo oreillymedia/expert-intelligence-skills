@@ -33,7 +33,7 @@ TEMPLATE = BUILD_DIR / "plugin-readme.template.md"
 DEFAULT_SOURCE = Path.home() / "Projects/oreilly/orm-skill-creator/oreilly-created-skills/release-skills"
 
 MARKETPLACE_NAME = "expert-intelligence-skills"
-VERSION = "0.1.1"
+VERSION = "0.2.0"
 AUTHOR = {"name": "O'Reilly Media", "url": "https://www.oreilly.com"}
 HOMEPAGE = "https://github.com/oreillymedia/expert-intelligence-skills"
 DOCUMENTATION_PAGE = "https://learning.oreilly.com/apidocs/mcp/expert/"
