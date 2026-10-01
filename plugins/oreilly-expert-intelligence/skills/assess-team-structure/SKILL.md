@@ -1,18 +1,22 @@
 ---
 name: assess-team-structure
-description: Synthesize cross-system evidence about an engineering team and evaluate it against expert leadership and org-design frameworks from O'Reilly — covering both "how is this team doing?" health reads and "why is this team slowing down, and what should we change?" structural diagnoses. Use this skill whenever a leader wants a team health assessment, is prepping for a quarterly or 1:1 or leadership review, needs to know what to act on this week, OR is diagnosing structural friction — a team that's grown too big, slowing velocity, unclear ownership, too much inflow, or a "should we split / restructure / change what they take on" question. Trigger when someone shares team signals (sprint output, incidents, retro themes, GitHub activity, org structure, initiatives) and wants expert interpretation, even if they just describe the situation in a few sentences.
+description: Assesses engineering-team health and structural friction using team evidence and cited O'Reilly leadership and organization-design sources. Use when a leader asks about delivery health, ownership, workload, coordination, knowledge concentration, team size, restructuring, or needs a team-level quarterly or leadership-review briefing. Also use to prepare for a manager 1:1 focused on team health; not for individual performance reviews, project delivery forecasts, or personal onboarding.
 ---
 
 # Team Assessment
 
-You're helping a leader understand how an engineering team is actually doing and, when the situation calls for it, why it's struggling structurally and what to change. This covers two closely related jobs that share one engine:
+Assess an engineering team's health or diagnose structural friction, then recommend the few actions that matter most. This skill supports two related modes:
 
-1. **Health read** — "How is the recommendations team doing? What shipped, what's the incident load, what strategic risks?" A defensible, framework-grounded picture of health, risks, and what deserves attention this week.
+1. **Team-health assessment** — "How is the recommendations team doing? What shipped, what's the incident load, what strategic risks?" A defensible, framework-grounded picture of health, risks, and what deserves attention this week.
 2. **Structural diagnosis** — "Our platform team hit 14 engineers and velocity is dropping — split, restructure, or change the inflow?" A diagnosis of the underlying pattern plus ranked interventions.
 
-The same move powers both: gather scattered evidence, interpret it against what practitioners have learned about how teams succeed and fail at scale, and tell the leader what to do — grounded in sources, not vibes.
+For either mode, combine supplied or connected evidence with directly relevant practitioner guidance. Keep observations, source-backed guidance, and your own analysis distinguishable.
 
-## Step 1: Gather team context
+## Source and citation rules
+
+Use only sources returned by the O'Reilly MCP tools. Tool names below are unqualified because the server name is user-configured; when the runtime requires qualified names, prepend the configured server name (for example, `oreilly:ask_oreilly_experts`). Cite each selected result as `[title](url) by authors`, using `product_title` when the result provides it instead of `title`. Copy the title and URL exactly from that same result; do not alter, normalize, shorten, repair, or reconstruct the URL. Use a string-valued `authors` field unchanged; for a list, join the returned names in order with commas. When `get_oreilly_citation` returns a fully rendered `citation_format`, use it unchanged. Never invent or reconstruct metadata or quotations. Remove a citation that cannot be verified against the tool result. Present uncited conclusions as your own analysis or omit them.
+
+## Step 1: Frame the assessment
 
 Start with what the user provided. That may include:
 
@@ -23,9 +27,9 @@ Start with what the user provided. That may include:
 - Team structure: size, sub-teams, what they own, adjacent-team coupling
 - Their own description — friction points, mood, org context
 
-If connected tools are available (Jira, GitHub, PagerDuty MCPs), offer to pull directly. Otherwise use what's given — don't require clean input. If context is very thin (just a team name), ask one focused question: "What signals do you have — recent output, friction points, incident load, team size and what they own?" One question, not a list.
+Use connected Jira, Linear, GitHub, or PagerDuty tools when available and authorized; otherwise use what the user supplied. Ask one focused question only when the evidence is too thin to distinguish a team-health assessment from a structural diagnosis. Otherwise proceed and label assumptions.
 
-## Step 2: Identify the diagnostic questions
+## Step 2: Diagnose the evidence
 
 Look at the evidence and name the most important questions before searching. Common patterns:
 
@@ -37,11 +41,18 @@ Look at the evidence and name the most important questions before searching. Com
 - **Delivery risk** — scope creep, unclear priorities, slipping timelines.
 - **Morale / attrition signals** — retro tone, disengagement, flight risk.
 
-Focus on the patterns that actually show up. For a pure health read you may touch several lightly; for a structural question, go deep on the one or two that explain the slowdown.
+Focus on patterns that the evidence actually supports. Separate temporary load from persistent structure: remove known one-off incidents, migrations, or retiring systems from the steady-state picture where possible. Test competing explanations instead of treating correlated signals as causal; for example, check whether the same people handling incidents are also the review bottleneck. For a structural question, go deep on the one or two patterns that best explain the slowdown.
 
-## Step 3: Query the O'Reilly MCP
+## Step 3: Research the diagnostic questions
 
-Use `ask_oreilly_experts` and `search_oreilly_content` — one query per diagnostic question is a good rhythm. Examples:
+Research in this order:
+
+1. Turn the diagnostic questions into targeted research questions.
+2. Use `ask_oreilly_experts` and/or `search_oreilly_content` as appropriate for the research need, following their tool descriptions.
+3. Select only results that directly support a material finding or recommendation.
+4. Draft from the verified evidence. If no directly relevant source surfaces, state the evidence gap instead of citing a weaker source.
+
+One query per diagnostic question is a good rhythm. Examples:
 
 - "signs a team has grown beyond its coordination mechanisms Team Topologies"
 - "when to split an engineering team / team size thresholds"
@@ -50,11 +61,11 @@ Use `ask_oreilly_experts` and `search_oreilly_content` — one query per diagnos
 - "org structure and Conway's law when restructuring teams"
 - "evaluating team velocity and delivery risk engineering manager"
 
-Pull `get_oreilly_citation` on strong hits (≥0.75) when you want to quote precisely. Aim for 3–5 sources covering the main patterns. Anchors that tend to serve well (a guide, not a requirement — cite what actually surfaces): *Engineering Manager's Handbook* (Evans), *The Engineering Executive's Primer* (Larson), *Leading Effective Engineering Teams* (Osmani), *Team Topologies* (Skelton & Pais), *Platform Engineering* (Fournier & Nowland), *Building Microservices* 2nd Ed (Newman, on org structure).
+Aim for a small set of sources covering the actual patterns, not a generic leadership bibliography. Useful anchors may include *Engineering Manager's Handbook*, *The Engineering Executive's Primer*, *Leading Effective Engineering Teams*, *Team Topologies*, *Platform Engineering*, and *Building Microservices*; cite them only if they surface and fit the evidence. Search the patterns the evidence actually shows. Do not force a named title into the assessment or omit a stronger result because it is unfamiliar.
 
 Core org-design frameworks (Team Topologies, Conway's law) are durable reference points and don't need to be current to apply well. But leadership practice around remote/hybrid teams, scaling norms, and what "good" looks like shifts — where a newer book revisits the same pattern, prefer it over an older one covering the same ground.
 
-## Step 4: Write the assessment
+## Step 4: Draft the assessment
 
 Be direct — the leader needs to make decisions, not collect information. Keep it fairly brief. Use headers and bullets, but let findings breathe with a sentence of reasoning rather than bare bullets.
 
@@ -67,16 +78,30 @@ Be direct — the leader needs to make decisions, not collect information. Keep 
 
 **Findings**
 For each (aim for 2–4 — more means you haven't prioritized):
-- **[Finding / pattern name]** — what the evidence shows and what expert frameworks say about it. Cite as a markdown link with author, using the MCP's `url`: *[Team Topologies](url) by Skelton & Pais frames this as…*. Cite only what surfaced — never invent a title, author, or link. When the platform carries multiple editions of a title, use the newest edition unless the user specifically needs an older one.
+- **[Finding / pattern name]** — what the team evidence shows and what practitioner guidance says about it. Cite the selected result following the source and citation rules above, then explain how the source applies.
 
 **Recommended actions**
-When the question is structural, make this a short **ranked list of interventions** — e.g., split into two stream-aligned teams / carve out a platform capability / cap incoming work / redistribute ownership — each with its main trade-off, strongest option first. When it's a health read, make it **priority actions this week** — specific ("schedule an ownership-handoff for service X with Priya"), not categorical ("improve communication"). Keep to 3 or fewer.
+Give no more than three ranked interventions. Each should name the action, timing or owner when known, the hypothesis it tests, and its main trade-off. Prefer cheap, reversible interventions before a reorganization when they can distinguish a flow problem from a structural one. For a team-health assessment, make these priority actions for the near term rather than generic advice.
 
 **Watch for**
-- The lagging indicator(s) that would tell the leader things are improving or getting worse.
+- Name the leading and lagging indicators that would show improvement or deterioration.
+- For a structural decision, state what observed threshold or result would change the recommendation.
 
 ---
 
-## Tone guidance
+## Step 5: Verify the assessment
+
+Before responding:
+
+1. Check that every finding maps to supplied team evidence and distinguishes steady-state signals from temporary noise.
+2. Remove or label causal claims the evidence cannot support.
+3. Confirm that actions are prioritized, specific, limited to three, and include a way to tell whether they worked.
+4. Compare every citation with the MCP result — title, author, edition, and URL must match exactly — and remove any citation you cannot verify rather than repairing it. Prefer the newest applicable edition when sources cover the same ground.
+
+If any check fails, revise the draft and run these checks again. Do not respond until all of them pass.
+
+## Principles
 
 Write as a thoughtful advisor. If evidence is thin, say so plainly rather than manufacturing confidence — a short honest read beats a padded one. Don't recap what the leader already told you; jump to interpretation. For structural questions, don't hide behind "it depends": name the most likely pattern and lead with the intervention you'd back, while being honest about what would change the call.
+
+Prefer the newest applicable edition when sources cover the same practice; for durable organization-design frameworks, relevance may outrank recency.

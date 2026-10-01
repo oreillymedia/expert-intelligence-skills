@@ -1,35 +1,52 @@
 ---
 name: review-architecture-decision
-description: >-
-  Turn a proposed system design into expert-informed trade-off analysis — showing where the architecture is sound, where it's fragile, and where it will create future cost — grounded in and quoting O'Reilly's distributed-systems and architecture literature. Use this skill whenever an engineer or architect is designing or evaluating a significant system-design choice and wants a rigorous, cited critique: event-driven vs. request/response, a messaging/streaming choice (Kafka, etc.), data consistency and exactly-once semantics, schema evolution, sharding, caching strategy, sync vs. async, or any major architecture decision. Trigger on prompts like "I'm drafting an architecture for X, evaluate the trade-offs," "how would experts assess this design," "review my system design for Y," or "what are the failure modes of this approach" — including when the design is described in prose rather than a formal doc.
+description: Reviews system-level or expensive-to-reverse design decisions using cited O'Reilly architecture sources, identifying sound choices, fragile assumptions, failure modes, future costs, and unresolved questions. Use when the primary task is evaluating architecture trade-offs involving messaging, consistency, schemas, partitioning, caching, data ownership, or synchronous-versus-asynchronous boundaries, including designs presented in an RFC, ADR, diagram, or executive brief. For organization-level adoption recommendations, use create-decision-brief; for document-wide evaluation of a proposal's claims, gaps, and approval readiness, use review-technical-proposal; for a bounded implementation choice, use compare-implementation-approaches.
 ---
 
 # Architecture Decision Review
 
-You're giving an engineer the review a respected principal architect would give: not "looks good" or "I'd do it differently," but a specific map of where the design holds up, where it's fragile, and where it quietly buys future cost — each judgment anchored in what the literature actually says, with passages quoted so the author can go read the source and argue with it.
+Review the important trade-offs in a system design. Produce a specific map of what is sound, what is fragile, what creates future cost, and which questions must be resolved before committing.
 
-The point is to shift the conversation from "the reviewer prefers X" to "this aligns with how Stopford frames event ordering, and here's exactly where your design diverges." That's what makes the feedback land and survive pushback.
+## Source and citation rules
 
-## Step 1: Understand the design and confirm the output shape
+Use only sources returned by the O'Reilly MCP tools. Tool names below are unqualified because the server name is user-configured; when the runtime requires qualified names, prepend the configured server name (for example, `oreilly:ask_oreilly_experts`). Cite each selected result as `[title](url) by authors`, using `product_title` when the result provides it instead of `title`. Copy the title and URL exactly from that same result; do not alter, normalize, shorten, repair, or reconstruct the URL. Use a string-valued `authors` field unchanged; for a list, join the returned names in order with commas. When `get_oreilly_citation` returns a fully rendered `citation_format`, use it unchanged. Never invent or reconstruct metadata or quotations. Remove a citation that cannot be verified against the tool result. Present uncited conclusions as your own analysis or omit them.
 
-Extract the design and the decisions inside it — from the doc, diagram, or prose. Identify the load-bearing choices: the ones that, if wrong, are expensive to reverse (data model, consistency guarantees, sync/async boundaries, partitioning, failure handling).
+## Step 1: Map the important decisions
 
-Then confirm what the reviewer wants, since this varies. Default to a **strong / fragile / future-cost map** (below). But if the prompt suggests otherwise, offer the alternatives briefly: a **trade-off table** (this choice vs. its alternatives, expert-backed pros/cons per row) or a **risk-ranked findings list** (riskiest decisions first). If the ask is ambiguous, ask one quick question: "Want the default map of strong/fragile/future-cost, or a trade-off table across alternatives?"
+Extract the design and the decisions inside it from the document, diagram, or prose. Identify choices that affect correctness or are expensive to reverse. For distributed or event-driven designs, explicitly check:
 
-## Step 2: Query the O'Reilly MCP on the specific trade-offs
+- atomicity between the system of record and messages;
+- idempotency for external side effects;
+- partial failure and compensation across independent consumers;
+- partition keys, ordering scope, retries, and rebalancing;
+- schema evolution and whether internal events become external contracts;
+- operational costs introduced by the proposed remedy.
 
-Search each load-bearing decision explicitly. Use `ask_oreilly_experts` and `search_oreilly_content`:
+Apply only the checks relevant to the design, but do not silently skip a named component or failure path.
+
+Use the **sound / fragile / future cost map** below by default. Use a **trade-off table** or **risk-ranked findings list** only when the user requests it or that format clearly fits the prompt better.
+
+## Step 2: Research the decisive trade-offs
+
+Research in this order:
+
+1. Turn each important design decision into a targeted question.
+2. Use `ask_oreilly_experts` and/or `search_oreilly_content` as appropriate for the research need, following their tool descriptions.
+3. Select only results that directly support a sound, fragile, or future cost finding or a question the author must resolve.
+4. Draft from the verified evidence. If no directly relevant source surfaces, state the evidence gap instead of citing a weaker source.
+
+Search each important decision explicitly:
 
 - "[pattern] trade-offs — when it works and when it breaks" (e.g., "exactly-once semantics trade-offs in event-driven systems")
 - "schema evolution / consumer rebalancing / ordering guarantees [technology]"
 - "failure modes of [architecture choice] at scale"
 - "alternatives to [choice] and how to decide between them"
 
-Pull `get_oreilly_citation` on strong hits (≥0.75) so you can **quote** — this skill leans on precise quoted passages, not paraphrase. Anchors that tend to serve well (a guide — cite what actually surfaces): *Kafka for Architects* (Gorshkova), *Designing Event-Driven Systems* (Stopford), *Foundations of Scalable Systems* (Gorton), *System Design on AWS* (Kumar & Singh). Search whatever technologies the design actually uses.
+Search the actual technologies and guarantees in the design. Useful anchors may include *Kafka for Architects*, *Designing Event-Driven Systems*, *Foundations of Scalable Systems*, and *System Design on AWS*; cite only what surfaces and applies. Do not force a named title into the review or omit a stronger result because it is unfamiliar.
 
 Foundational distributed-systems reasoning (ordering, consistency, failure modes) doesn't go stale. But where the trade-off depends on what a specific platform currently supports — managed service capabilities, a streaming engine's current guarantees, a cloud provider's offerings — prefer the newest coverage, since a design review that cites an outdated capability set will misjudge the trade-off.
 
-## Step 3: Write the review
+## Step 3: Draft the review
 
 Lead with a one-line verdict on the overall shape, then the map.
 
@@ -37,10 +54,10 @@ Lead with a one-line verdict on the overall shape, then the map.
 
 ### Architecture Review — [System / Decision]
 
-**Overall:** one or two sentences — is this the right shape, with reservations, or is a load-bearing choice wrong?
+**Overall:** one or two sentences — is this the right shape, with reservations, or is an important choice wrong?
 
 **Sound** — decisions well-supported by the evidence.
-- **[Decision]** — why it holds up, with a quoted/cited passage. *[Designing Event-Driven Systems](url) by Ben Stopford: "…"*
+- **[Decision]** — why it holds up, followed by a citation formatted according to the source and citation rules above and, when useful, a short exact quotation from a verified expanded passage.
 
 **Fragile** — decisions that work only under assumptions the design doesn't guarantee.
 - **[Decision]** — the hidden assumption, what breaks it, and the source. Be specific about the failure mode (e.g., "exactly-once here assumes idempotent consumers; your handler isn't — on rebalance you'll double-process").
@@ -53,8 +70,17 @@ Lead with a one-line verdict on the overall shape, then the map.
 
 ---
 
+## Step 4: Verify the review
+
+Before responding:
+
+1. Check that every finding maps to a stated design choice, component, sequence, or explicitly labeled inference.
+2. Reconstruct each failure sequence and remove impossible states or wording that assumes an event occurred before the design allows it.
+3. Confirm coverage of atomicity, idempotency, compensation, ordering, schema contracts, and operational cost wherever applicable.
+4. Confirm that quotations are exact and short. Compare every citation with the MCP result — title, author, edition, and URL must match exactly — and remove any citation you cannot verify rather than repairing it. Prefer the newest applicable edition.
+
+If any check fails, revise and run these checks again. Do not respond until all of them pass.
+
 ## Principles
 
-**Cite only what surfaced, and never name an expert whose work you didn't find.** It's tempting to invoke a famous name ("Kleppmann would say…") for authority, but if that author's work didn't surface in your queries, don't reference them — it's unverifiable and erodes trust. Reference and quote only authors whose work actually came back from the MCP, as markdown links with author. Never invent a title, quote, or link. When the platform carries multiple editions of a title, use the newest edition unless the user specifically needs an older one.
-
-Quote precisely and sparingly — a sharp two-line quote beats a paragraph. Be direct about fragility; a review that only praises isn't a review. Where the evidence is genuinely mixed, say so and give the author the decision rather than a false verdict.
+Prefer the newest applicable edition when the same work is available in multiple editions. Quote precisely and sparingly — a sharp two-line quote beats a paragraph. Be direct about fragility; a review that only praises isn't a review. Where the evidence is genuinely mixed, say so and give the author the decision rather than a false verdict.

@@ -1,6 +1,6 @@
 {
   "name": "evaluate-security-risk",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Produces a STRIDE threat model, flagging the risks teams commonly miss.",
   "author": {
     "name": "O'Reilly Media",

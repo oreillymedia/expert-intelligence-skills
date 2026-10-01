@@ -1,6 +1,6 @@
 {
   "name": "review-technical-proposal",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Reviews an RFC for gaps and generates the pushback questions you'll get.",
   "author": {
     "name": "O'Reilly Media",

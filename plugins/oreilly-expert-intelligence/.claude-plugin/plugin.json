@@ -1,7 +1,7 @@
 {
   "name": "oreilly-expert-intelligence",
   "displayName": "O'Reilly Expert Intelligence",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A cited expert research toolkit for engineering decisions, delivery, reliability, security, and team growth.",
   "author": {
     "name": "O'Reilly Media",

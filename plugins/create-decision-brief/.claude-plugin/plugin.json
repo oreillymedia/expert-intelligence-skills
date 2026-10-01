@@ -1,7 +1,7 @@
 {
   "name": "create-decision-brief",
   "displayName": "O'Reilly Expert Intelligence",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Turns a \"should we?\" into a memo-ready recommendation grounded in expert consensus.",
   "author": {
     "name": "O'Reilly Media",

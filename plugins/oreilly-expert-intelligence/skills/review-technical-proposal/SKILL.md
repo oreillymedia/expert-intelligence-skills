@@ -1,16 +1,17 @@
 ---
 name: review-technical-proposal
-description: >-
-  Review a technical proposal or RFC against expert literature — surfacing what it handles well, what it underestimates, and the sharp questions the author should be pushed on — all grounded in and cited to O'Reilly's practitioner content. Use this skill whenever someone shares a written RFC, design proposal, technical spec, ADR, or migration/adoption plan and wants review feedback, gap analysis, or help preparing to push back in a review. Trigger on prompts like "review this RFC," "what does this proposal underestimate," "what questions should I ask the author," "here's our spec for adopting X — poke holes in it," or "give me review comments on this design doc." Distinct from a design trade-off analysis: this skill reviews a *document* and generates reviewer feedback and pushback questions.
+description: Reviews a submitted or described technical proposal against cited O'Reilly practitioner sources, identifying strengths, unsupported claims, hidden assumptions, underestimated risks, material omissions, and specific questions needed before approval. Use when the primary task is evaluating the proposal's overall justification and readiness, whether it is presented as an RFC, technical specification, ADR, design proposal, migration plan, or informal description. Architecture trade-offs may be part of the review; for an organization-level adoption recommendation, use create-decision-brief, and for evaluation centered on the underlying system-design choices, use review-architecture-decision.
 ---
 
 # Technical Proposal Review
 
-You're helping a tech lead give the kind of RFC review that makes the proposal better and the author sharper — feedback that carries the weight of practitioner consensus rather than personal taste. The most valuable thing you produce is the set of questions the author hasn't answered yet, because those are what a good reviewer actually contributes.
+Review a submitted technical proposal for strengths, unsupported claims, underestimated risks, and material unanswered questions. Evaluate the document in front of you rather than replacing it with a new design.
 
-The reframe that makes this work: the reviewer isn't saying "I don't like this," they're saying "the literature says teams underestimate X here — how does your proposal handle it?" That keeps the author engaging the substance instead of defending against the messenger.
+## Source and citation rules
 
-## Step 1: Read the proposal for what it claims and assumes
+Use only sources returned by the O'Reilly MCP tools. Tool names below are unqualified because the server name is user-configured; when the runtime requires qualified names, prepend the configured server name (for example, `oreilly:ask_oreilly_experts`). Cite each selected result as `[title](url) by authors`, using `product_title` when the result provides it instead of `title`. Copy the title and URL exactly from that same result; do not alter, normalize, shorten, repair, or reconstruct the URL. Use a string-valued `authors` field unchanged; for a list, join the returned names in order with commas. When `get_oreilly_citation` returns a fully rendered `citation_format`, use it unchanged. Never invent or reconstruct metadata or quotations. Remove a citation that cannot be verified against the tool result. Present uncited conclusions as your own analysis or omit them.
+
+## Step 1: Map the proposal's claims and omissions
 
 Extract from the document:
 
@@ -21,41 +22,60 @@ Extract from the document:
 
 If no document is attached but the user describes a proposal, work from the description and say what you're inferring.
 
-## Step 2: Query the O'Reilly MCP for the practitioner view
+## Step 2: Research the practitioner evidence
 
-Search for what experienced teams have learned about *this kind* of proposal — especially the adoption realities and things that get underestimated. Use `ask_oreilly_experts` and `search_oreilly_content`:
+Research in this order:
+
+1. Turn the proposal's claims, assumptions, and adoption or operations gaps into targeted questions.
+2. Use `ask_oreilly_experts` and/or `search_oreilly_content` as appropriate for the research need, following their tool descriptions.
+3. Select only results that directly support a strength, gap, or pushback question.
+4. Draft from the verified evidence. If no directly relevant source surfaces, state the evidence gap instead of citing a weaker source.
+
+Search for what experienced teams have learned about *this kind* of proposal — especially the adoption realities and things that get underestimated:
 
 - "[technology/change] adoption trade-offs — what teams underestimate"
 - "when NOT to adopt [X] / [X] anti-patterns"
 - "operational cost / day-2 realities of [X]"
 - "[X] migration risks and how to de-risk"
 
-Pull `get_oreilly_citation` on strong hits (≥0.75). For a service-mesh RFC, anchors that tend to serve well (a guide — cite what actually surfaces): *The Enterprise Path to Service Mesh Architectures* (Calcote), *Mastering API Architecture* (Bryant, Gough, Auburn), *Istio in Action* (Posta, Maloku), *Kubernetes: Up and Running* 3rd Ed. Search whatever the proposal is actually about — the skill works for any RFC.
+Search the proposal's actual technology, adoption pattern, and claims; do not force a familiar title into the review.
 
 What a proposal like this "usually gets wrong" shifts as an ecosystem matures — tooling improves, known rough edges get fixed, and new ones emerge. When sources on the same adoption pattern differ mainly in age, prefer the newer one so the pushback questions reflect the technology's current state, not problems it solved two years ago.
 
-## Step 3: Write the review
+## Step 3: Draft the review
 
-Use the three-part structure. The pushback questions are the payload — make them specific enough that the author can't wave them off.
+Use the structure below. Rank findings by decision impact and consolidate related symptoms under their shared cause. By default, cover the three to five gaps most likely to change approval, rollout safety, or ongoing ownership; do not inventory every plausible omission. The pushback questions are the payload, but each should earn its place by testing a material claim or closing a material gap.
 
 ---
 
 ### Review — [Proposal Title]
 
 **What it handles well**
-- **[Strength]** — genuinely, and briefly. Credit real strengths so the critique is trusted; cite where the approach matches expert guidance.
+- Credit the proposal's strongest one or two choices briefly; cite where the approach matches expert guidance.
 
 **What it underestimates**
-- **[Gap/risk]** — what the proposal assumes or glosses, what the literature says usually goes wrong here, and why it matters for this team. *[The Enterprise Path to Service Mesh Architectures](url) by Lee Calcote notes that adoption commonly stalls on…*
+- For each ranked gap, state the proposal claim or omission, the evidence, and the consequence for this team. Avoid repeating the same risk under staffing, rollout, and operations when one combined finding is clearer.
 
 **Questions to push back on**
-- Sharp, specific, answerable questions — the ones that expose the soft spots. "What's the rollback path if the mesh control plane fails in prod?" not "Have you considered reliability?" Tie each to the gap it probes.
+- Ask one or two specific, answerable questions per material gap. "What's the rollback path if the mesh control plane fails in prod?" is useful; "Have you considered reliability?" is not. Do not add a second checklist that merely restates every finding.
 
 **Overall read**
 - One or two sentences: is this ready, ready-with-revisions, or not-yet — and the single most important thing to resolve.
 
 ---
 
+## Step 4: Verify the review
+
+Before responding:
+
+1. Check that each strength, gap, and question maps to the proposal or to an explicitly labeled inference.
+2. Confirm that questions are specific, answerable, and tied to material risks.
+3. Compare every citation with the MCP result — title, author, edition, and URL must match exactly — and remove any citation you cannot verify rather than repairing it.
+4. Remove generic objections, duplicated findings, and criticism not supported by the proposal or cited evidence.
+5. Check that the review evaluates the submitted proposal rather than expanding into a generic architecture review or writing a replacement proposal. Offer a counter-proposal only when it clarifies the minimum revision needed for approval.
+
+If any check fails, revise and run these checks again. Do not respond until all of them pass.
+
 ## Principles
 
-Cite only sources that actually surfaced, as markdown links with author; never invent a title, author, or link, and don't invoke an expert by name unless their work came back from the MCP. When the platform carries multiple editions of a title, use the newest edition unless the user specifically needs an older one. Credit real strengths before criticizing — a review that's all negative reads as posturing and gets discounted. Make the pushback questions concrete and fair; the goal is a better proposal, not a defeated author. Where the proposal is actually sound, say so plainly rather than manufacturing objections.
+Prefer the newest applicable edition for changing technology and adoption practices. Credit real strengths, make criticism evidence-based, and keep pushback questions concrete and fair. If the proposal is sound, say so instead of manufacturing objections.

@@ -1,7 +1,7 @@
 {
   "name": "review-architecture-decision",
   "displayName": "O'Reilly Expert Intelligence",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Evaluates a system design against expert trade-off analysis.",
   "author": {
     "name": "O'Reilly Media",
