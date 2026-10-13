@@ -10,7 +10,9 @@ One plugin per skill. Each plugin carries two manifests: `.claude-plugin/plugin.
 back to the Claude manifest, but the Codex manifest is where presentation metadata lives
 that Claude Code's validator would flag as unknown fields).
 
-SKILL.md is copied verbatim from the source repo — this script never edits skill content.
+SKILL.md is copied from the source repo, with YAML frontmatter normalized when needed.
+Skill content is never edited by this script.
+The optional assets/ and references/ directories are copied recursively into each skill.
 test-cases.md stays in the source repo; it is not for public consumption. Re-running this
 script is idempotent, and it removes any test-cases.md left over from earlier runs.
 
@@ -22,6 +24,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import textwrap
 from pathlib import Path
 
@@ -201,6 +204,7 @@ SKILLS = [
         "display_name": "Organizational Intelligence Blueprint",
         "bucket": "De-risk a decision",
         "category": "productivity",
+        "capabilities": ["Interactive", "Read", "Write"],
         "one_liner": "Builds a custom reasoning skill that pairs your team's data with cited expert frameworks.",
         "what_you_get": (
             "A blueprint that maps where your team's knowledge lives and which sources take precedence, "
@@ -254,6 +258,7 @@ BUNDLE = {
     "name": "oreilly-expert-intelligence",
     "display_name": "O'Reilly Expert Intelligence",
     "category": "productivity",
+    "capabilities": ["Interactive", "Read", "Write"],
     "one_liner": (
         "A cited expert research toolkit for engineering decisions, delivery, reliability, security, "
         "and team growth."
@@ -335,7 +340,7 @@ def codex_manifest(skill: dict) -> dict:
             "longDescription": skill["what_you_get"],
             "developerName": "O'Reilly Media",
             "category": skill["category"],
-            "capabilities": ["Read"],
+            "capabilities": skill.get("capabilities", ["Read"]),
             "websiteURL": WEBSITE_URL,
             "privacyPolicyURL": "https://www.oreilly.com/privacy.html",
             "termsOfServiceURL": "https://www.oreilly.com/terms/",
@@ -441,6 +446,24 @@ def normalize_frontmatter(text: str, *, label: str) -> str:
     return opener + "---\n" + fixed + "---\n" + body
 
 
+def copy_skill(src: Path, destination: Path) -> None:
+    """Copy publishable skill content, refreshing supporting directories on each build."""
+    destination.mkdir(parents=True, exist_ok=True)
+    (destination / "test-cases.md").unlink(missing_ok=True)
+    skill_md = normalize_frontmatter((src / "SKILL.md").read_text(),
+                                    label=f"{src.name}/SKILL.md")
+    (destination / "SKILL.md").write_text(skill_md)
+
+    for directory in ("assets", "references"):
+        target = destination / directory
+        # Replace generated directories so removed source files do not linger in releases.
+        if target.exists():
+            shutil.rmtree(target)
+        source = src / directory
+        if source.is_dir():
+            shutil.copytree(source, target)
+
+
 def write_json(path: Path, payload: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
@@ -465,12 +488,7 @@ def main() -> int:
 
         plugin_root = REPO_ROOT / "plugins" / name
         skill_dir = plugin_root / "skills" / name
-        skill_dir.mkdir(parents=True, exist_ok=True)
-
-        (skill_dir / "test-cases.md").unlink(missing_ok=True)
-        skill_md = normalize_frontmatter((src / "SKILL.md").read_text(),
-                                        label=f"{name}/SKILL.md")
-        (skill_dir / "SKILL.md").write_text(skill_md)
+        copy_skill(src, skill_dir)
 
         write_json(plugin_root / ".claude-plugin/plugin.json", claude_manifest(skill))
         write_json(plugin_root / ".codex-plugin/plugin.json", codex_manifest(skill))
@@ -483,9 +501,7 @@ def main() -> int:
         name = skill["name"]
         src = args.source / name
         skill_dir = bundle_root / "skills" / name
-        skill_dir.mkdir(parents=True, exist_ok=True)
-        skill_md = normalize_frontmatter((src / "SKILL.md").read_text(), label=f"{name}/SKILL.md")
-        (skill_dir / "SKILL.md").write_text(skill_md)
+        copy_skill(src, skill_dir)
 
     write_json(bundle_root / ".claude-plugin/plugin.json", claude_manifest(BUNDLE))
     write_json(bundle_root / ".codex-plugin/plugin.json", codex_manifest(BUNDLE))
