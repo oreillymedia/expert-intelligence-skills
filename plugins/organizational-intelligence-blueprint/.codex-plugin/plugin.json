@@ -1,0 +1,40 @@
+{
+  "name": "organizational-intelligence-blueprint",
+  "version": "0.3.0",
+  "description": "Andrew Odewahn's organizational intelligence system brings an expert review layer to your toughest problems.",
+  "author": {
+    "name": "O'Reilly Media",
+    "url": "https://www.oreilly.com"
+  },
+  "homepage": "https://learning.oreilly.com/apidocs/mcp/expert/",
+  "repository": "https://github.com/oreillymedia/expert-intelligence-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "oreilly",
+    "expert-intelligence",
+    "citations",
+    "productivity"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Organizational Intelligence Blueprint",
+    "shortDescription": "Andrew Odewahn's organizational intelligence system brings an expert review layer to your toughest problems.",
+    "longDescription": "Map your org's key systems, build a reasoning skill specific to your team, and ground hard decisions in cited O'Reilly frameworks, so you get a clear recommendation instead of generic suggestions.",
+    "developerName": "O'Reilly Media",
+    "category": "productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://learning.oreilly.com/expert-intelligence/",
+    "privacyPolicyURL": "https://www.oreilly.com/privacy.html",
+    "termsOfServiceURL": "https://www.oreilly.com/terms/",
+    "defaultPrompt": [
+      "How can I apply Andrew Odewahn's organizational intelligence article to my team?",
+      "I need better organizational intelligence. Our AI reports just summarize data. Make them recommend something.",
+      "Should our platform team hire another engineer? Help me map where our team's knowledge lives."
+    ]
+  }
+}
