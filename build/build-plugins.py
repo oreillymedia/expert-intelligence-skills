@@ -205,17 +205,16 @@ SKILLS = [
         "bucket": "De-risk a decision",
         "category": "productivity",
         "capabilities": ["Interactive", "Read", "Write"],
-        "one_liner": "Builds a custom reasoning skill that pairs your team's data with cited expert frameworks.",
+        "one_liner": "Andrew Odewahn's organizational intelligence system brings an expert review layer to your toughest problems.",
         "what_you_get": (
-            "A blueprint that maps where your team's knowledge lives and which sources take precedence, "
-            "identifies connection options, and routes recurring questions to cited expert frameworks. "
-            "Includes a custom reasoning skill file, a sample run against one of your questions, and a "
-            "human review loop to turn analysis into decisions."
+            "Map your org's key systems, build a reasoning skill specific to your team, and "
+            "ground hard decisions in cited O'Reilly frameworks, so you get a clear "
+            "recommendation instead of generic suggestions."
         ),
         "prompts": [
-            "Connect our systems so AI can reason about them.",
-            "Our internal AI reports are too generic — help us fix them.",
-            "Build a reasoning skill for an AI analyst over our team's systems.",
+            "How can I apply Andrew Odewahn's organizational intelligence article to my team?",
+            "I need better organizational intelligence. Our AI reports just summarize data. Make them recommend something.",
+            "Should our platform team hire another engineer? Help me map where our team's knowledge lives.",
         ],
     },
     {
